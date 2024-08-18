@@ -6,11 +6,20 @@ export default function Navbar() {
         <span className="font-bold text-2xl">
             Encode
         </span>
-        <div className="flex gap-3">
-            <Button radius="none" variant="flat" color="success" size="lg">Home</Button>
-            <Button radius="none" variant="flat" color="success" size="lg">Team</Button>
-            <Button radius="none" variant="flat" color="success" size="lg">Gallery</Button>
-            <Button radius="none" variant="flat" color="success" size="lg">Contact</Button>
+        <div className="flex gap-3 items-center">
+
+            <span className="text-4xl text-foreground-300">
+                [
+            </span>
+
+            <Button radius="none" variant="flat" color="success">home</Button>
+            <Button radius="none" variant="flat" color="success">about</Button>
+            <Button radius="none" variant="flat" color="success">team</Button>
+            <Button radius="none" variant="flat" color="success">gallery</Button>
+            <Button radius="none" variant="flat" color="success">contact</Button>
+            <span className="text-4xl text-foreground-300">
+                ]
+            </span>
         </div>
     </div>
 }

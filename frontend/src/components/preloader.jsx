@@ -53,7 +53,7 @@ export default function Preloader() {
 
                 <div className="flex w-full h-full justify-center items-center transition-opacity" ref={preloaderSpinner}>
                     <l-jelly
-                        size="80"
+                        size="70"
                         speed="0.5"
                         color="black"
                     />
@@ -64,7 +64,7 @@ export default function Preloader() {
                     ref={preloaderText}
                 >
                     <span className="uppercase self-center text-[3rem] leading-none mb-[-4rem]">loading{loadingDots}</span>
-                    <span className="text-[9rem] leading-none">{timerCount}%</span>
+                    <span className="text-[7rem] leading-none minecraft font-normal">{timerCount}%</span>
                 </div>
             </div>
             <div className="white-screen" ref={preloaderWhite}>
