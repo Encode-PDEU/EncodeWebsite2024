@@ -60,7 +60,7 @@ export default function Preloader() {
                 </div>
 
                 <div
-                    className="absolute bottom-0 left-0 px-[20px] font-bold flex justify-between w-full items-end transition-opacity"
+                    className="absolute bottom-0 left-0 px-[20px] font-bold flex justify-between w-full items-end transition-opacity text-black"
                     ref={preloaderText}
                 >
                     <span className="uppercase self-center text-[3rem] leading-none mb-[-4rem]">loading{loadingDots}</span>
