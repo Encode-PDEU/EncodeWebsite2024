@@ -16,7 +16,7 @@ export default function Preloader() {
     useEffect(() => {
         preloader.current.scrollIntoView({ block: 'start' });
         const startInterval = () => {
-            document.documentElement.style.overflow = 'hidden';
+            document.documentElement.style.overflowY = 'hidden';
 
             intervalIdRef.current = setInterval(() => {
                 setTimerCount(prevCount => {
@@ -28,7 +28,7 @@ export default function Preloader() {
                         preloaderSpinner.current.style.opacity = "0";
 
                         setTimeout(() => {
-                            document.documentElement.style.overflow = 'scroll';
+                            document.documentElement.style.overflowY = 'scroll';
                         }, 100);
 
                         return prevCount;

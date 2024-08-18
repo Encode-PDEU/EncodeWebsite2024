@@ -12,7 +12,7 @@ export function TeamCard({ imgsrc = "https://github.com/aryanranderiya.png", nam
 }
 
 export default function Team() {
-    return <section className="min-h-screen w-full flex py-[9em] flex-col items-center gap-6">
+    return <section className="h-screen w-full flex py-[9em] flex-col items-center gap-6">
 
 
         <div className="flex flex-col items-center gap-2">
@@ -25,11 +25,6 @@ export default function Team() {
             <TeamCard name="Saumya Talwani" position="Vice President" />
             <TeamCard name="Diya Mirani" position="Treasurer" />
             <TeamCard name="Dhyan Shah" position="Technical Head" />
-
-            <TeamCard name="Head" position="Head of XYZ" />
-            <TeamCard name="Head" position="Head of XYZ" />
-            <TeamCard name="Head" position="Head of XYZ" />
-            <TeamCard name="Head" position="Head of XYZ" />
         </div>
 
         <Button color="success" variant="flat" radius="none" size="lg">View All Members</Button>

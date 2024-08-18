@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@nextui-org/button": "2.0.37",
     "@nextui-org/code": "2.0.32",
     "@nextui-org/input": "2.2.4",

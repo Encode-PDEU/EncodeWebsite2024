@@ -26,10 +26,6 @@ export default function App() {
   };
 
 
-  // useEffect(() => {
-
-  // }, []);
-
   return (
     <main className="dark bg-black min-h-screen text-foreground overflow-x-hidden"
       onMouseMove={handleMouseMove}
