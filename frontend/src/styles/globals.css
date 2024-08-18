@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rubberBand {
+  20% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+.green-screen {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+.green-screen-animation {
+  animation: rubberBand 1.2s cubic-bezier(0.04, 1.02, 0.37, 0.99) forwards;
+}
+
+.white-screen-animation {
+  animation: rubberBand 1.5s cubic-bezier(0.04, 1.02, 0.37, 0.99) forwards;
+}
+
+.white-screen {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  animation-delay: 0.1s;
+  z-index: 9;
+}
