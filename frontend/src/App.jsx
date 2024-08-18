@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/navbar";
 
 export default function App() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [delayedPosition, setDelayedPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const [delayedPosition, setDelayedPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const [isMouseDown, setIsMouseDown] = useState(false);
 
   const handleMouseMove = (event) => {
@@ -26,6 +26,10 @@ export default function App() {
   };
 
 
+  // useEffect(() => {
+
+  // }, []);
+
   return (
     <main className="dark bg-black min-h-screen text-foreground overflow-x-hidden"
       onMouseMove={handleMouseMove}
@@ -33,7 +37,7 @@ export default function App() {
       onMouseUp={handleMouseUp}
     >
 
-      <div className={`absolute rounded-full ${isMouseDown ? "cursorscale" : ""} h-[15px] w-[15px]
+      <div className={`fixed rounded-full ${isMouseDown ? "cursorscale" : ""} h-[15px] w-[15px]
        bg-[#00ff7b] duration-75 transition-transform	`}
         style={{
           left: position.x,
@@ -42,7 +46,7 @@ export default function App() {
         }}      >
       </div>
 
-      <div className={`absolute rounded-full h-[30vw] w-[30vw] bg-[#00ff7b] bg-opacity-10 blur-3xl`}
+      <div className={`fixed rounded-full h-[30vw] w-[30vw] bg-[#00ff7b] bg-opacity-10 blur-3xl`}
         style={{
           left: delayedPosition.x,
           top: delayedPosition.y,
@@ -50,7 +54,7 @@ export default function App() {
         }} >
       </div>
 
-      <div className={`absolute rounded-full h-[7vw] w-[7vw] bg-[#00ff7b] bg-opacity-50 blur-3xl`}
+      <div className={`fixed rounded-full h-[7vw] w-[7vw] bg-[#00ff7b] bg-opacity-50 blur-3xl`}
         style={{
           left: delayedPosition.x + 40,
           top: delayedPosition.y - 40,
@@ -58,7 +62,7 @@ export default function App() {
         }} >
       </div>
 
-      <div className={`absolute rounded-full h-[70vw] w-[70vw] bg-[#00ff7b] bg-opacity-5 blur-3xl`}
+      <div className={`fixed rounded-full h-[70vw] w-[70vw] bg-[#00ff7b] bg-opacity-5 blur-3xl`}
         style={{
           left: delayedPosition.x,
           top: delayedPosition.y,

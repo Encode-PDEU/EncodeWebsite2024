@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from "@nextui-org/button";
 
 export default function Navbar() {
-    return <div className="w-full flex top-0 fixed p-[1em] justify-between items-center">
+    return <div className="w-full flex top-0 fixed p-[1em] justify-between items-center backdrop-blur-xl z-10">
 
         <span className="font-bold text-2xl">
             Encode

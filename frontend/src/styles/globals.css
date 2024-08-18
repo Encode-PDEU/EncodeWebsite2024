@@ -25,26 +25,25 @@ body {
   }
 }
 
-.green-screen {
+.preloader1 {
   position: absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
   z-index: 10;
 }
-.green-screen-animation {
+.preloader1-animation {
   animation: rubberBand 1.2s cubic-bezier(0.04, 1.02, 0.37, 0.99) forwards;
 }
 
-.white-screen-animation {
+.preloader2-animation {
   animation: rubberBand 1.5s cubic-bezier(0.04, 1.02, 0.37, 0.99) forwards;
 }
 
-.white-screen {
+.preloader2 {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: white;
   animation-delay: 0.1s;
   z-index: 9;
 }

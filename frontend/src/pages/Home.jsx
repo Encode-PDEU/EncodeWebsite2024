@@ -1,11 +1,12 @@
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { SentIcon } from "../components/icons"
+import Team from "../components/Home/Team";
 
 export default function Home() {
-    return <div className="flex p-[3em] h-screen">
+    return <div className="flex p-[3em] min-h-screen flex-col">
 
-        <div className="flex flex-col items-center justify-center w-full m-[1em] mt-[2em] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] rounded-3xl relative">
+        <div className="flex h-[85vh] flex-col items-center justify-center w-full m-[1em] mt-[2em] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] rounded-3xl relative">
 
             <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
 
@@ -50,5 +51,7 @@ export default function Home() {
             </div>
 
         </div>
+
+        <Team />
     </div>
 }
