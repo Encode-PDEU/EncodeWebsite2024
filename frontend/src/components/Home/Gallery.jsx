@@ -31,12 +31,39 @@ const imageUrls = [
 ];
 
 export function GalleryImage({ url, type = "" }) {
-    return <img src={url}
-        className={`gallery_image${type} sm:min-w-[500px] sm:max-w-[500px] sm:min-h-[300px] sm:max-h-[300px]
-         min-w-[250px] max-w-[250px] min-h-[150px] max-h-[150px] 
-        object-cover`}
-    ></img>
+    const imageRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => { setIsVisible(entry.isIntersecting); },
+            { threshold: 0.1 }
+        );
+
+        if (imageRef.current) observer.observe(imageRef.current);
+
+        return () => {
+            if (imageRef.current) {
+                observer.unobserve(imageRef.current);
+            }
+        };
+    }, []);
+
+    return (
+        <img
+            ref={imageRef}
+            src={url}
+            className={`gallery_image${type}
+                sm:min-w-[500px] sm:max-w-[500px] sm:min-h-[300px] sm:max-h-[300px]
+                min-w-[250px] max-w-[250px] min-h-[150px] max-h-[150px]
+                object-cover
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0'}
+                transition-opacity duration-500`}
+            alt="Gallery"
+        />
+    );
 }
+
 
 export default function Gallery() {
     const horizontalLoop1 = useRef(null);
@@ -101,7 +128,7 @@ export default function Gallery() {
                 )}
             </div>
 
-            <Button color="success" radius="none" size="lg" className="mt-2 font-semibold text-lg">View Gallery</Button>
+            <Button color="success" radius="none" size="lg" className="mt-5 font-semibold text-lg">View Gallery</Button>
         </section>
     );
 }

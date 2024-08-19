@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/button";
 import { SentIcon } from "../components/icons"
 import Team from "../components/Home/Team";
 import Gallery from "../components/Home/Gallery";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
 import Quote from "../components/Home/Quote";
@@ -12,10 +12,34 @@ export default function Home({ preloaderEnded }) {
     const [cmd, setCmd] = useState("");
     const [output, setOutput] = useState("");
     const [logoDis, setLogoDis] = useState(true);
-    // const [typingText, setTypingText] = useState("T");
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [welcomeTextVisible, setWelcomeTextVisible] = useState(false);
+    const welcomeTextRef = useRef(null);
     const navigate = useNavigate()
+
+    useEffect(() => {
+        let hasHappenedOnce = false;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setTimeout(() => {
+                    setWelcomeTextVisible(entry.isIntersecting);
+                    hasHappenedOnce = true;
+                }, !hasHappenedOnce ? 2100 : 0);
+            },
+            { threshold: 0.1 }
+        );
+
+        if (welcomeTextRef.current) observer.observe(welcomeTextRef.current);
+
+        return () => {
+            if (welcomeTextRef.current) {
+                observer.unobserve(welcomeTextRef.current);
+            }
+        };
+    }, []);
+
+
 
     const handleCommand = (cmd) => {
         switch (cmd.toLowerCase()) {
@@ -69,7 +93,6 @@ export default function Home({ preloaderEnded }) {
         setCmd("");
     };
 
-
     return (
         <div className="flex p-[3em] min-h-screen flex-col sm:gap-0 gap-4 items-center justify-center">
             <div className="min-h-screen flex items-center justify-center p-[1em] w-screen mt-[-30px]">
@@ -90,12 +113,18 @@ export default function Home({ preloaderEnded }) {
                         </div>
                     </div>
 
-                    <div className={logoDis ? "flex flex-col sm:gap-0 gap-3" : "hidden"}>
-                        <span className="text-center w-full sm:text-7xl text-3xl">Welcome to Encode</span>
+                    <div className={logoDis ? "flex flex-col sm:gap-0 gap-3" : "hidden"} ref={welcomeTextRef}>
+                        <div className="overflow-hidden flex">
+                            <span className={`text-center w-full sm:text-7xl text-3xl transition-all duration-500
+                            font-bold ${welcomeTextVisible ? "transformVisible" : "transformInvisible"}`}>
+                                Welcome to Encode
+                            </span>
+                        </div>
                         <span className="text-center w-full text-2xl minecraft font-normal text-foreground-500">
                             {currentText}
                         </span>
                     </div>
+
                     <div className={logoDis ? "hidden" : "flex items-start w-full h-full align-top mt-12 px-6"}>
                         <span className="text-left w-full sm:text-2xl text-xl font-normal">
                             {output}

@@ -77,7 +77,7 @@ export default function Preloader({ setPreloaderEnded }) {
 
                 <div className="flex w-full h-full justify-center items-center transition-opacity flex-col" ref={preloaderSpinner}>
 
-                    <span>
+                    <span className="text-xl">
                         {text.map((letter) => letter)}
                     </span>
 

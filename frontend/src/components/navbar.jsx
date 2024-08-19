@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, ref) => {
     return (
         <>
-            <div className="flex fixed top-0 left-0 w-full flex-col p-[1em] items-center justify-around gap-3 bg-black h-[40vh] py-[50px] transition-all z-[1] border-b-1 border-[#00ff7b]" ref={ref} props={props}>
+            <div className="flex fixed top-0 left-0 w-full flex-col p-[1em] items-center justify-around gap-3 bg-black h-[40vh] py-[50px] transition-all z-[1] border-b-1 border-[#00ff7b] duration-500" ref={ref} props={props}>
                 <span className="text-2xl">Home</span>
                 <span className="text-2xl">Team</span>
                 <span className="text-2xl">About</span>
@@ -19,7 +19,7 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
             </div>
 
             <div
-                className={`w-screen h-screen fixed bg-black left-0 top-0 backdrop-blur-3xl transition-all ${toggleMenuOpen ? " bg-opacity-0 invisible" : " bg-opacity-70 visible"}`}
+                className={`w-screen h-screen fixed bg-black left-0 top-0 backdrop-blur-3xl transition-all duration-500 ${toggleMenuOpen ? " bg-opacity-0 invisible" : " bg-opacity-70 visible"}`}
                 onClick={() => setToggleMenuOpen((prev) => !prev)}
             ></div>
         </>
@@ -29,17 +29,14 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
 export default function Navbar() {
     const navigate = useNavigate();
     const menuRef = useRef(null);
-    const [toggleMenuOpen, setToggleMenuOpen] = useState(false)
+    const [toggleMenuOpen, setToggleMenuOpen] = useState(true)
 
     const handleClickHome = () => {
         navigate("/");
     };
 
     useEffect(() => {
-        console.log(toggleMenuOpen);
-        if (menuRef.current) {
-            menuRef.current.style.top = toggleMenuOpen ? `-${menuRef.current.clientHeight + 10}px` : "0px"
-        }
+        if (menuRef.current) menuRef.current.style.top = toggleMenuOpen ? `-${menuRef.current.clientHeight + 10}px` : "0px"
     }, [toggleMenuOpen]);
 
     return (
