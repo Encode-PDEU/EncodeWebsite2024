@@ -133,18 +133,14 @@ export function TeamCard({ imgsrc = "https://links.aryanranderiya.com/l/default_
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => {
-                setVisible(entry.isIntersecting);
-            },
+            ([entry]) => { setVisible(entry.isIntersecting); },
             { threshold: 0.3 }
         );
 
         if (cardRef.current) observer.observe(cardRef.current);
 
         return () => {
-            if (cardRef.current) {
-                observer.unobserve(cardRef.current);
-            }
+            if (cardRef.current) observer.unobserve(cardRef.current);
         };
     }, []);
 

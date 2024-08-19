@@ -19,11 +19,11 @@ export default function Preloader({ setPreloaderEnded }) {
         return chars[Math.floor(Math.random() * chars.length)];
     }
 
-
     useEffect(() => {
         preloader.current.scrollIntoView({ block: 'start' });
         const startInterval = () => {
             document.documentElement.style.overflowY = 'hidden';
+            window.scrollTo(0, 0);
 
             intervalIdRef.current = setInterval(() => {
                 setTimerCount(prevCount => {

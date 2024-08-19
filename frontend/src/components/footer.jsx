@@ -32,27 +32,23 @@ export default function Footer() {
         clearInterval(shuffleIntervalRef.current);
     };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            { threshold: 0.2 }
-        );
 
-        const observer2 = new IntersectionObserver(
-            ([entry]) => {
-                setIsTextVisible(entry.isIntersecting);
-            },
-            { threshold: 1 }
-        );
+    useEffect(() => {
+        const handleIntersection = (entries) => {
+            entries.forEach(entry => {
+                if (entry.target === footerRef.current) setIsVisible(entry.isIntersecting)
+                else if (entry.target === footerTextRef.current) setIsTextVisible(entry.isIntersecting);
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersection, { threshold: 0.2 });
 
         if (footerRef.current) observer.observe(footerRef.current);
-        if (footerTextRef.current) observer2.observe(footerTextRef.current);
+        if (footerTextRef.current) observer.observe(footerTextRef.current);
 
         return () => {
             if (footerRef.current) observer.unobserve(footerRef.current);
-            if (footerTextRef.current) observer2.unobserve(footerTextRef.current);
+            if (footerTextRef.current) observer.unobserve(footerTextRef.current);
         };
     }, []);
 

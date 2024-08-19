@@ -39,8 +39,6 @@ export default function Home({ preloaderEnded }) {
         };
     }, []);
 
-
-
     const handleCommand = (cmd) => {
         switch (cmd.toLowerCase()) {
             case 'help':
