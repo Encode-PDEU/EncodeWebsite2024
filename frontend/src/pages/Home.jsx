@@ -5,6 +5,7 @@ import Team from "../components/Home/Team";
 import Gallery from "../components/Home/Gallery";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UpcomingEvents from "../components/Home/UpcomingEvents";
 
 export default function Home() {
     const [cmd, setCmd] = useState("");
@@ -61,7 +62,9 @@ export default function Home() {
                         <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
                             ▢
                         </div>
-                        <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center"></div>
+                        <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
+                            X
+                        </div>
                     </div>
                 </div>
 
@@ -99,6 +102,7 @@ export default function Home() {
                 </form>
             </div>
 
+            <UpcomingEvents />
             <Team />
             <Gallery />
         </div>

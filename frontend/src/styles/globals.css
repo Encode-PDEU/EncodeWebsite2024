@@ -7,6 +7,11 @@
   user-select: none;
 }
 
+/* a:hover {
+  color: #00ff7b;
+  cursor: pointer !important;
+} */
+
 .minecraft {
   font-family: "Minecraft" !important;
 }

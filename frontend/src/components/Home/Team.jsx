@@ -2,7 +2,7 @@ import { Button } from "@nextui-org/button"
 
 
 export function TeamCard({ imgsrc = "https://github.com/aryanranderiya.png", name, position }) {
-    return <div className="flex flex-col p-[2em] items-center gap-5 bg-gray-500 bg-opacity-25 rounded-none">
+    return <div className="flex flex-col p-[2em] items-center gap-5 bg-[#00ff7b] bg-opacity-15 rounded-none">
         <img src={imgsrc} className="w-[200px] h-[200px]" />
         <div className="flex flex-col items-center">
             <span className="text-2xl">{name}</span>
@@ -12,8 +12,7 @@ export function TeamCard({ imgsrc = "https://github.com/aryanranderiya.png", nam
 }
 
 export default function Team() {
-    return <section className="h-screen w-full flex py-[9em] flex-col items-center gap-6">
-
+    return <section className="min-h-screen justify-center h-fit w-full flex flex-col items-center gap-6">
 
         <div className="flex flex-col items-center gap-2">
             <span className="font-semibold text-5xl">The Team</span>
@@ -27,7 +26,7 @@ export default function Team() {
             <TeamCard name="Dhyan Shah" position="Technical Head" />
         </div>
 
-        <Button color="success" variant="flat" radius="none" size="lg">View All Members</Button>
+        <Button color="success" radius="none" size="lg" className="font-semibold text-lg">View All</Button>
 
     </section>
 }
