@@ -3,9 +3,12 @@ import { Chip } from "@nextui-org/chip";
 import { useRef, useEffect, useState } from "react";
 
 function formatDate(isoDate) {
+    const date = new Date(isoDate);
+    if (isNaN(date.getTime())) return isoDate
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(isoDate).toLocaleDateString(undefined, options);
+    return date.toLocaleDateString(undefined, options);
 }
+
 
 function EventCard({ title, date, type = "Workshop", description, isVisible }) {
     const cardRef = useRef(null);
@@ -56,6 +59,18 @@ export default function UpcomingEvents() {
             description: "Get hands-on full-stack experience in our two-day MERN Stack Bootcamp, building applications with MongoDB, Express.js, React, and Node.js",
             type: "Workshop"
         },
+        {
+            title: "Flutter Bootcamp",
+            date: "Soon",
+            description: "Learn to build cross-platform mobile apps with Flutter in this two-day bootcamp. Perfect for beginners and developers looking to enhance their skills.",
+            type: "Workshop"
+        },
+        {
+            title: "Intro to AI/ML",
+            date: "Soon",
+            description: "Discover the basics of Artificial Intelligence and Machine Learning with hands-on examples in this introductory workshop",
+            type: "Workshop"
+        },
     ];
 
     return (
@@ -65,7 +80,7 @@ export default function UpcomingEvents() {
                 <span className="font-normal text-md text-foreground-500">This year's events of Encode!</span>
             </div>
 
-            <div className="flex flex-wrap gap-5 justify-center">
+            <div className="flex flex-wrap gap-5 justify-center w-[80vw]">
                 {events.map((event, index) => (
                     <EventCard
                         key={index}

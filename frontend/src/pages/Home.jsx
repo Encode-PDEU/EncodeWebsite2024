@@ -92,9 +92,9 @@ export default function Home({ preloaderEnded }) {
     };
 
     return (
-        <div className="flex p-[3em] min-h-screen flex-col sm:gap-0 gap-4 items-center justify-center">
-            <div className="min-h-screen flex items-center justify-center p-[1em] w-screen mt-[-30px]">
-                <div className="flex sm:h-[70vh] h-[85vh] flex-col items-center justify-center sm:w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] sm:rounded-3xl rounded-2xl relative green_shadow">
+        <div className="flex p-[3em] min-h-[100vh] transition-height flex-col sm:gap-0 gap-4 items-center justify-center">
+            <div className="min-h-[100vh] transition-height flex items-center justify-center p-[1em] w-screen mt-[-30px]">
+                <div className="flex h-[80dvh] w-full transition-height flex-col items-center justify-center sm:w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] sm:rounded-3xl rounded-2xl relative green_shadow">
                     <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
                         <span>{"cmd > encode@pdeu: ~"}</span>
 
@@ -118,7 +118,7 @@ export default function Home({ preloaderEnded }) {
                                 Welcome to Encode
                             </span>
                         </div>
-                        <span className="text-center w-full text-2xl minecraft font-normal text-foreground-500">
+                        <span className="text-center w-full sm:text-2xl minecraft font-normal text-foreground-500">
                             {currentText}
                         </span>
                     </div>
@@ -145,7 +145,7 @@ export default function Home({ preloaderEnded }) {
                             startContent={<span className="mr-5 text-success">{">"}</span>}
                             placeholder="Enter 'help' for list of all commands"
                         />
-                        <Button isIconOnly size="lg" color={"success"} variant="shadow">
+                        <Button isIconOnly size="lg" color={"success"} variant="shadow" onClick={handleSubmit}>
                             <SentIcon />
                         </Button>
                     </form>

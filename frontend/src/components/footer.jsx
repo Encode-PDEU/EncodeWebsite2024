@@ -58,9 +58,9 @@ export default function Footer() {
             className={`flex items-center justify-center flex-col overflow-hidden transition-opacity duration-1000 ease-in-out
              ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         >
-            <hr style={{ borderColor: "#00ff7b" }} className="w-full mb-6 pt-[50px]" />
+            <hr style={{ borderColor: "#00ff7b" }} className="w-full sm:mb-6 pt-[50px]" />
 
-            <div className="flex w-full justify-between px-[3em] pb-[2em] items-start">
+            <div className="flex w-full justify-between sm:px-[3em] px-[1.3em] pb-[2em] items-start">
                 <div className="flex flex-col justify-end items-start">
                     <span className="text-foreground-400 mb-4 z-[1]">
                         STAY CONNECTED
@@ -83,7 +83,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <span className="text-sm text-foreground-400 sm:mb-[-1vw]">Built by the 2024 Web Team at Encode</span>
+            <span className="text-xs text-foreground-400 sm:mb-[-1vw] lowercase">Built by the 2024 Web Dev Team at Encode</span>
             <div className="flex justify-betweeen items-center w-full flex-col overflow-hidden" ref={footerTextRef}>
                 <span
                     className={`font-bold leading-none sm:mb-[-3vw] text-[20vw] z-[1] hover:text-[#00ff7b] transition-all 

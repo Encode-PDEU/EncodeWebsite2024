@@ -19,7 +19,7 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
             </div>
 
             <div
-                className={`w-screen h-screen fixed bg-black left-0 top-0 backdrop-blur-3xl transition-all duration-500 ${toggleMenuOpen ? " bg-opacity-0 invisible" : " bg-opacity-70 visible"}`}
+                className={`w-screen h-[100dvh] fixed bg-black left-0 top-0 backdrop-blur-3xl transition-all duration-500 ${toggleMenuOpen ? " bg-opacity-0 invisible" : " bg-opacity-70 visible"}`}
                 onClick={() => setToggleMenuOpen((prev) => !prev)}
             ></div>
         </>

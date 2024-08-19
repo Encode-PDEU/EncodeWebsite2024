@@ -26,7 +26,7 @@ export default function Quote() {
     return (
         <section
             ref={sectionRef}
-            className={`h-fit min-h-[100vh] justify-center w-full flex flex-col items-center z-[1] font-bold
+            className={`h-fit min-h-[100dvh] justify-center w-full flex flex-col items-center z-[1] font-bold
             sm:text-[4vw] text-[7vw] ${isVisible ? 'opacity-100' : 'opacity-0'}
             transition-opacity duration-1000 ease-in-out`}
         >
