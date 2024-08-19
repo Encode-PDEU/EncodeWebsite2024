@@ -6,6 +6,7 @@ import Gallery from "../components/Home/Gallery";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
+import Quote from "../components/Home/Quote";
 
 export default function Home() {
     const [cmd, setCmd] = useState("");
@@ -50,7 +51,7 @@ export default function Home() {
         setCmd("");
     };
     return (
-        <div className="flex p-[3em] min-h-screen flex-col">
+        <div className="flex p-[3em] min-h-screen flex-col sm:gap-0 gap-4">
             <div className="flex h-[85vh] flex-col items-center justify-center w-full m-[1em] mt-[2em] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] rounded-3xl relative">
                 <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
                     <span>{"cmd > encode@pdeu: ~"}</span>
@@ -105,6 +106,7 @@ export default function Home() {
             <UpcomingEvents />
             <Team />
             <Gallery />
+            <Quote />
         </div>
     );
 }

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { Button } from '@nextui-org/button';
 
 export function GalleryImage({ url, type = "" }) {
-    return <img src={url} className={`gallery_image${type}`}></img>
+    return <img src={url} className={`gallery_image${type} w-[500px] h-[250px] object-cover`}></img>
 }
 
 export default function Gallery() {
@@ -64,13 +64,13 @@ export default function Gallery() {
             <div className='flex flex-col gap-3'>
                 <div className="flex flex-row flex-nowrap gap-3">
                     {Array(5).fill().map((_, index) =>
-                        <GalleryImage key={index} url="https://placehold.co/600x300.png" />
+                        <GalleryImage key={index} url="https://placehold.co/500x250.png" />
                     )}
                 </div>
 
                 <div className="flex flex-row flex-nowrap gap-3">
                     {Array(5).fill().map((_, index) =>
-                        <GalleryImage key={index} url="https://placehold.co/600x300.png" type="1" />
+                        <GalleryImage key={index} url="https://placehold.co/500x250.png" type="1" />
                     )}
                 </div>
             </div>

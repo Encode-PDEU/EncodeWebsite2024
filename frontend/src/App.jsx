@@ -59,7 +59,7 @@ export default function App() {
         }} >
       </div>
 
-      <div className={`fixed rounded-full h-[70vw] w-[70vw] bg-[#00ff7b] bg-opacity-5 blur-3xl z-0 pointer-events-none	1`}
+      <div className={`fixed rounded-full h-[70vw] w-[70vw] bg-[#00ff7b] bg-opacity-5 blur-3xl z-0 pointer-events-none	`}
         style={{
           left: delayedPosition.x,
           top: delayedPosition.y,

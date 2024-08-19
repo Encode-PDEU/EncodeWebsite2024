@@ -18,7 +18,7 @@ function EventCard({ title, date, type = "Workshop",
                     <Chip color="success" variant="flat">{type}</Chip>
                 </div>
                 <span className="text-2xl">{title}</span>
-                <span className="text-foreground-500 max-w-[19vw] helvetica">{description}</span>
+                <span className="text-foreground-500 sm:max-w-[19vw] helvetica">{description}</span>
             </div>
             <Button color="success" variant="flat" radius="none" className="mt-auto">Register</Button>
         </div>

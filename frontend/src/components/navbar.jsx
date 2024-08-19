@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
