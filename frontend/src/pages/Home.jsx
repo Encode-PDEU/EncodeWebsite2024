@@ -73,7 +73,7 @@ export default function Home({ preloaderEnded }) {
     return (
         <div className="flex p-[3em] min-h-screen flex-col sm:gap-0 gap-4 items-center justify-center">
             <div className="min-h-screen flex items-center justify-center p-[1em] w-screen mt-[-30px]">
-                <div className="flex h-[70vh] flex-col items-center justify-center w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] rounded-3xl relative">
+                <div className="flex sm:h-[70vh] h-[85vh] flex-col items-center justify-center sm:w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] sm:rounded-3xl rounded-2xl relative green_shadow">
                     <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
                         <span>{"cmd > encode@pdeu: ~"}</span>
 
@@ -90,20 +90,20 @@ export default function Home({ preloaderEnded }) {
                         </div>
                     </div>
 
-                    <div className={logoDis ? "flex flex-col" : "hidden"}>
-                        <span className="text-center w-full text-7xl">Welcome to Encode</span>
+                    <div className={logoDis ? "flex flex-col sm:gap-0 gap-3" : "hidden"}>
+                        <span className="text-center w-full sm:text-7xl text-3xl">Welcome to Encode</span>
                         <span className="text-center w-full text-2xl minecraft font-normal text-foreground-500">
                             {currentText}
                         </span>
                     </div>
                     <div className={logoDis ? "hidden" : "flex items-start w-full h-full align-top mt-12 px-6"}>
-                        <span className="text-left w-full text-2xl font-normal">
+                        <span className="text-left w-full sm:text-2xl text-xl font-normal">
                             {output}
                         </span>
                     </div>
 
                     <form
-                        className="absolute bottom-5 w-[98%] flex items-center gap-2"
+                        className="absolute sm:bottom-5 bottom-2 sm:w-[98%] w-[95%] flex items-center gap-2"
                         action=""
                         onSubmit={handleSubmit}
                     >

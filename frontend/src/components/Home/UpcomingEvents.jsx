@@ -46,7 +46,7 @@ export default function UpcomingEvents() {
     return (
         <section className="min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6 ">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl">Upcoming Events</span>
+                <span className="font-semibold text-5xl text-center">Upcoming Events</span>
                 <span className="font-normal text-md text-foreground-500 ">This years events of Encode!</span>
             </div>
 

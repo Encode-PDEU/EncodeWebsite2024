@@ -31,7 +31,11 @@ const imageUrls = [
 ];
 
 export function GalleryImage({ url, type = "" }) {
-    return <img src={url} className={`gallery_image${type} min-w-[500px] max-w-[500px] min-h-[300px] max-h-[300px] object-cover`}></img>
+    return <img src={url}
+        className={`gallery_image${type} sm:min-w-[500px] sm:max-w-[500px] sm:min-h-[300px] sm:max-h-[300px]
+         min-w-[250px] max-w-[250px] min-h-[150px] max-h-[150px] 
+        object-cover`}
+    ></img>
 }
 
 export default function Gallery() {

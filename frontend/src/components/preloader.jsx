@@ -89,11 +89,11 @@ export default function Preloader({ setPreloaderEnded }) {
                 </div>
 
                 <div
-                    className="absolute bottom-0 left-0 px-[20px] font-bold flex justify-between w-full items-end transition-opacity text-[#00ff7b]                    "
+                    className="absolute bottom-0 left-0 sm:px-[20px] px-[15px] font-bold flex justify-between w-full items-end transition-opacity text-[#00ff7b]"
                     ref={preloaderText}
                 >
-                    <span className="uppercase self-center text-[2rem] leading-none mb-[-4rem]">loading{loadingDots}</span>
-                    <span className="text-[7rem] leading-none minecraft font-normal">
+                    <span className="uppercase self-center sm:text-[2rem] leading-none sm:mb-[-4rem]">loading{loadingDots}</span>
+                    <span className="sm:text-[7rem] text-[3rem] leading-none minecraft font-normal">
                         {timerCount % 3 === 0 && timerCount !== 100 ?
                             getRandomCharacter() + getRandomCharacter() + getRandomCharacter()
                             : timerCount}%
