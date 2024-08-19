@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Preloader from "./components/preloader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -9,6 +9,7 @@ export default function App() {
   const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const [delayedPosition, setDelayedPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const [preloaderEnded, setPreloaderEnded] = useState(false);
 
   const handleMouseMove = (event) => {
     setPosition({ x: event.clientX, y: event.clientY });
@@ -68,9 +69,9 @@ export default function App() {
       </div>
 
       <Navbar />
-      <Preloader />
+      <Preloader setPreloaderEnded={setPreloaderEnded} />
       <Routes>
-        <Route element={<Home />} path="/" />
+        <Route element={<Home preloaderEnded={preloaderEnded} />} path="/" />
       </Routes>
       <Footer />
     </main>

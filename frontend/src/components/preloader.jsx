@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import 'ldrs/jelly'
 
-export default function Preloader() {
+export default function Preloader({ setPreloaderEnded }) {
+
     const preloader = useRef(null);
     const preloaderWhite = useRef(null);
     const preloaderText = useRef(null);
@@ -9,8 +10,14 @@ export default function Preloader() {
     const intervalIdRef = useRef(null);
 
     const [timerCount, setTimerCount] = useState(0);
-    const [intervalTime, setIntervalTime] = useState(5);
+    const [intervalTime, setIntervalTime] = useState(6);
     const [loadingDots, setLoadingDots] = useState("...");
+    const [text, setText] = useState(Array(10).fill());
+
+    function getRandomCharacter() {
+        const chars = ";!@#$%^&*(){}[]Ø;!@#$%^&*(){}[]Ø;!@#$%^&*(){}[]Ø"
+        return chars[Math.floor(Math.random() * chars.length)];
+    }
 
 
     useEffect(() => {
@@ -31,11 +38,19 @@ export default function Preloader() {
                             document.documentElement.style.overflowY = 'scroll';
                         }, 100);
 
+                        setPreloaderEnded(true);
                         return prevCount;
                     }
 
-                    if (prevCount === 70) setIntervalTime(15);
+                    if (prevCount === 60) setIntervalTime(10);
+                    if (prevCount === 75) setIntervalTime(20);
                     if (prevCount === 90) setIntervalTime(75);
+
+                    if (prevCount >= 82 && prevCount <= 90)
+                        setText(["l", "o", "a", "d", "i", "n", "g", " ", "e", "n", "c", "o", "d", "e", " ", "w", "e", "b", "s", "i", "t", "e"]);
+                    else if (prevCount >= 95 && prevCount <= 100) setText(["w", "e", "l", "c", "o", "m", "e", "."]);
+                    else setText((text) => text.map(() => getRandomCharacter()))
+
                     return prevCount + 1;
                 });
             }, intervalTime);
@@ -62,12 +77,15 @@ export default function Preloader() {
 
                 <div className="flex w-full h-full justify-center items-center transition-opacity flex-col" ref={preloaderSpinner}>
 
-                    encode
+                    <span>
+                        {text.map((letter) => letter)}
+                    </span>
+
                     <l-jelly
                         size="50"
                         speed="0.5"
                         color="#00ff7b"
-                    />
+                    ></l-jelly>
                 </div>
 
                 <div
@@ -75,7 +93,12 @@ export default function Preloader() {
                     ref={preloaderText}
                 >
                     <span className="uppercase self-center text-[2rem] leading-none mb-[-4rem]">loading{loadingDots}</span>
-                    <span className="text-[7rem] leading-none minecraft font-normal">{timerCount}%</span>
+                    <span className="text-[7rem] leading-none minecraft font-normal">
+                        {timerCount % 3 === 0 && timerCount !== 100 ?
+                            getRandomCharacter() + getRandomCharacter() + getRandomCharacter()
+                            : timerCount}%
+
+                    </span>
                 </div>
             </div>
             <div className="preloader2 bg-[#00ff7b]" ref={preloaderWhite} />

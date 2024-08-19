@@ -1,4 +1,37 @@
+import { useState, useEffect, useRef } from "react";
+
+
+
 export default function Footer() {
+    const [text, setText] = useState(["E", "N", "C", "O", "D", "E"]);
+    const shuffleIntervalRef = useRef(null);
+
+    function getRandomCharacter() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;!@#$%^&*(){}[]Ø"
+        return chars[Math.floor(Math.random() * chars.length)];
+    }
+
+
+    const handleMouseEnter = () => {
+        let count = 0;
+
+        shuffleIntervalRef.current = setInterval(() => {
+            count++;
+            setText((text) => text.map(() => getRandomCharacter()))
+            if (count >= 30) {
+                setText(["E", "N", "C", "O", "D", "E"]);
+                clearInterval(shuffleIntervalRef.current);
+                count = 0;
+            }
+        }, 10);
+    };
+
+    const handleMouseLeave = () => {
+        setText(["E", "N", "C", "O", "D", "E"]);
+        clearInterval(shuffleIntervalRef.current);
+    };
+
+
     return (
         <div className="flex items-center justify-center flex-col overflow-hidden">
             <hr style={{ borderColor: "#00ff7b" }} className="w-full mb-6" />
@@ -37,7 +70,12 @@ export default function Footer() {
                     <span className="coolvetica">OF</span>
                     <span className="coolvetica">PDEU</span>
                 </div> */}
-                <span className="font-bold leading-none sm:mb-[-3vw] text-[20vw] z-[1]">ENCODE</span>
+                <span className="font-bold leading-none sm:mb-[-3vw] text-[20vw] z-[1] hover:text-[#00ff7b] transition-colors overflow-hidden"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    {text.map((letter) => letter)}
+                </span>
             </div>
         </div >
     )

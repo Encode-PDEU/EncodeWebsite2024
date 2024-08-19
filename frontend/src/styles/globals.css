@@ -57,3 +57,8 @@ body {
   transform: scale(6) !important;
   mix-blend-mode: lighten;
 }
+
+.gallery_image {
+  will-change: transform;
+  backface-visibility: hidden;
+}
