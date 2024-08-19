@@ -78,9 +78,7 @@ export default function Preloader() {
                     <span className="text-[7rem] leading-none minecraft font-normal">{timerCount}%</span>
                 </div>
             </div>
-            <div className="preloader2 bg-[#00ff7b]" ref={preloaderWhite}>
-                hey
-            </div>
+            <div className="preloader2 bg-[#00ff7b]" ref={preloaderWhite} />
         </div>
     );
 }

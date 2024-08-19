@@ -12,15 +12,15 @@ function EventCard({ title, date, type = "Workshop",
     return (
         <div className="flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-5px] transition-all outline-1 hover:outline
          outline-[#00ff7b]">
-            <div className="flex flex-col pb-2">
-                <div className="flex justify-between pb-3 gap-11">
-                    <Chip color="success" className="mb-2" variant="dot" >{formatDate(date)}</Chip>
-                    <Chip color="success" className="mb-2" variant="flat"  >{type}</Chip>
+            <div className="flex flex-col pb-2 gap-2">
+                <div className="flex justify-between pb-2 gap-10">
+                    <Chip color="success" variant="dot">{formatDate(date)}</Chip>
+                    <Chip color="success" variant="flat">{type}</Chip>
                 </div>
                 <span className="text-2xl">{title}</span>
-                <span className="text-foreground-500 max-w-[19vw]">{description}</span>
+                <span className="text-foreground-500 max-w-[19vw] helvetica">{description}</span>
             </div>
-            <Button color="success" variant="flat" radius="none">Register</Button>
+            <Button color="success" variant="flat" radius="none" className="mt-auto">Register</Button>
         </div>
     )
 }
@@ -31,13 +31,13 @@ export default function UpcomingEvents() {
         {
             title: "Web Security Basics",
             date: "2025-01-24T00:00:00Z",
-            description: "",
+            description: "Join us for a comprehensive workshop on web security fundamentals to learn about the latest threats and how to protect your web applications.",
             type: "Workshop"
         },
         {
             title: "MERN Stack Bootcamp",
             date: "2025-02-08T00:00:00Z",
-            description: "",
+            description: "Get hands-on full-stack experience in our two-day MERN Stack Bootcamp, building applications with MongoDB, Express.js, React, and Node.js",
             type: "Workshop"
         },
     ];
@@ -47,10 +47,10 @@ export default function UpcomingEvents() {
         <section className="min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6 ">
             <div className="flex flex-col items-center gap-2">
                 <span className="font-semibold text-5xl">Upcoming Events</span>
-                <span className="font-normal text-md text-foreground-500">This years events of Encode!</span>
+                <span className="font-normal text-md text-foreground-500 ">This years events of Encode!</span>
             </div>
 
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap gap-5 justify-center">
                 {events.map((event, index) => (
                     <EventCard key={index} title={event.title} date={event.date} description={event.description} type={event.type} />
                 ))}

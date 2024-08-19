@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
     const navigate = useNavigate();
     const handleClickHome = () => {
-        navigate("/"); // Navigate to the root page
+        navigate("/");
     };
     return (
-        <div className="w-full flex top-0 fixed p-[1em] justify-between items-center backdrop-blur-xl z-10">
+        <div className="w-full flex top-0 fixed p-[1em] justify-between items-center backdrop-blur-xl z-10 bg-black bg-opacity-20">
             <span className="font-bold text-2xl">Encode</span>
             <div className="flex gap-3 items-center">
                 <span className="text-4xl text-foreground-300">[</span>
