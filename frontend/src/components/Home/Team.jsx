@@ -173,7 +173,7 @@ export default function Team() {
 
 
     return (
-        <section className="min-h-screen justify-center h-fit w-full flex flex-col items-center gap-6">
+        <section className="min-h-screen py-[3em] justify-center h-fit w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
                 <span className="font-semibold text-5xl">The Team</span>
                 <span className="font-normal text-md text-foreground-500">Meet the faces behind the club!</span>

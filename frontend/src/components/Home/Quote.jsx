@@ -26,24 +26,24 @@ export default function Quote() {
     return (
         <section
             ref={sectionRef}
-            className={`h-fit min-h-[100dvh] justify-center w-full flex flex-col items-center z-[1] font-bold
+            className={`h-fit sm:min-h-[100dvh] min-h-[70dvh] justify-center w-full flex flex-col items-center z-[1] font-bold
             sm:text-[4vw] text-[7vw] ${isVisible ? 'opacity-100' : 'opacity-0'}
             transition-opacity duration-1000 ease-in-out`}
         >
             <img
                 src="https://i.ibb.co/bFJ46nW/IMG-4313.jpg"
                 alt="IMG-4313"
-                className="w-screen object-cover h-[80vh] absolute z-[1] opacity-30 select-none"
+                className="w-screen object-cover sm:h-[80vh] h-[60vh] absolute z-[1] opacity-30 select-none"
             />
             <div className="z-[2] w-full flex flex-col sm:gap-0 gap-5">
 
                 <div className="overflow-hidden flex justify-center">
-                    <span className={`text-center transition-transform duration-1000  ${isVisible ? 'transformVisible' : 'transformInvisible'}`}>We're Architects of Change
+                    <span className={`text-start transition-transform duration-1000  ${isVisible ? 'transformVisible' : 'transformInvisible'}`}>We're Architects of Change
                     </span>
                 </div>
 
                 <div className="overflow-hidden flex justify-center">
-                    <span className={`text-center font-normal sm:text-[3vw] text-[5vw transition-transform duration-1000  ${isVisible ? 'transformVisible' : 'transformInvisible'}`}>We're Architects of Change
+                    <span className={`font-normal sm:text-[3vw] text-[5vw] transition-transform  text-start duration-1000  ${isVisible ? 'transformVisible' : 'transformInvisible'}`}>
                         Building a community that actually creates an impact.
                     </span>
                 </div>

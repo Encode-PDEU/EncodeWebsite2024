@@ -75,3 +75,18 @@ body {
 .transformInvisible {
   transform: translateY(100%);
 }
+
+.quote-button:hover::before,
+.quote-button:hover::after {
+  content: '"';
+  margin: 0;
+  padding: 0;
+}
+
+.quote-button {
+  gap: 2px;
+  display: flex;
+  min-width: 90px;
+  width: 90px;
+  max-width: 90px;
+}

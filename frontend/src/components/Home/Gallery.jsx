@@ -111,7 +111,7 @@ export default function Gallery() {
 
 
     return (
-        <section className="min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6 z-[1]">
+        <section className="sm:min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6 z-[1]">
             <div className="flex flex-col items-center gap-2">
                 <span className="font-semibold text-5xl">Gallery</span>
             </div>

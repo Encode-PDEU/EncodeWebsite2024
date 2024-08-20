@@ -7,6 +7,9 @@ import Quote from "../components/Home/Quote";
 import Team from "../components/Home/Team";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
 import { SentIcon } from "../components/icons";
+import linkedin from "../images/linkedin.webp"
+import instagram from "../images/instagram.webp"
+import twitter from "../images/twitter.webp"
 
 export default function Home({ preloaderEnded }) {
 
@@ -75,12 +78,14 @@ export default function Home({ preloaderEnded }) {
             case "help":
                 output = (
                     <>
-                        Available commands:<br /><br />
+                        List of available commands:<br /><br />
                         <span className="font-bold">help</span> - Display this help message<br />
-                        <span className="font-bold">clear</span> - Clear Screen <br />
+                        <span className="font-bold">clear | cls</span> - Clear Screen <br />
 
                         <br /><span className="font-bold">------- Information -------</span><br />
+                        <span className="font-bold">encode</span> - Who are we? <br />
                         <span className="font-bold">join</span> - How to join Encode? <br />
+                        <span className="font-bold">socials</span> - Where can I follow Encode? <br />
 
                         <br /><span className="font-bold">------- Navigation -------</span><br />
                         <span className="font-bold">home</span> - Go to the Home page (You are already at home page) <br />
@@ -89,12 +94,37 @@ export default function Home({ preloaderEnded }) {
                         <span className="font-bold">gallery</span> - Go to the Gallery page <br />
                         <span className="font-bold">contact</span> - Go to the Contact page <br />
 
-                        <br />------- Other ------- <br />
+                        <br /><span className="font-bold">------- Other -------</span><br />
                         coming soon <br />
-                        socials <br />
+                        <br />
 
                         <br /> <br />
                     </>
+                );
+                break;
+            case "socials":
+                output = (
+                    <div className="flex h-fit gap-2 flex-col">
+
+
+                        <a className="flex gap-3 items-center hover:underline decoration-white cursor-pointer"
+                            href="https://www.linkedin.com/company/encode-pdpu/" target="_blank">
+                            <img src={linkedin} alt="LinkedIn Logo" width={"30px"} height={"30px"} />
+                            <span className="text-xl text-white">LinkedIn</span>
+                        </a>
+
+                        <a className="flex gap-3 items-center hover:underline decoration-white"
+                            href="https://www.instagram.com/encode_pdeu/" target="_blank">
+                            <img src={instagram} alt="Instagram Logo" width={"30px"} height={"30px"} />
+                            <span className="text-xl text-white">Instagram</span>
+                        </a>
+
+                        <a className="flex gap-3 items-center hover:underline decoration-white"
+                            href="https://twitter.com/Encode_PDEU" target="_blank">
+                            <img src={twitter} alt="Twitter Logo" width={"30px"} height={"30px"} className="invert" />
+                            <span className="text-xl text-white">Twitter</span>
+                        </a>
+                    </div>
                 );
                 break;
             case "home":
@@ -150,7 +180,7 @@ export default function Home({ preloaderEnded }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (cmd === "clear") {
+        if (cmd === "clear" || cmd === "cls") {
             setLogoDis(true);
             setWelcomeTextVisible(true);
             setOutputs([]);
