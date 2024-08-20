@@ -1,12 +1,12 @@
-import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { SentIcon } from "../components/icons"
-import Team from "../components/Home/Team";
-import Gallery from "../components/Home/Gallery";
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { Input } from "@nextui-org/input";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UpcomingEvents from "../components/Home/UpcomingEvents";
+import Gallery from "../components/Home/Gallery";
 import Quote from "../components/Home/Quote";
+import Team from "../components/Home/Team";
+import UpcomingEvents from "../components/Home/UpcomingEvents";
+import { SentIcon } from "../components/icons";
 
 export default function Home({ preloaderEnded }) {
 
@@ -188,7 +188,7 @@ export default function Home({ preloaderEnded }) {
             <div className="min-h-[100vh] transition-height flex items-center justify-center p-[1em] w-screen mt-[-30px]">
                 <div className="flex h-[80dvh] w-full transition-height flex-col items-center justify-center sm:w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] sm:rounded-3xl rounded-2xl relative green_shadow">
                     <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
-                        <span>{"cmd > encode@pdeu: ~"}</span>
+                        <span>{"cmd > { ! }"}</span>
 
                         <div className="pr-3 flex items-center gap-2">
                             <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
@@ -220,7 +220,7 @@ export default function Home({ preloaderEnded }) {
                             {outputs.map((output) => {
                                 return (
                                     <div key={output.id}>
-                                        <div className="mt-3">{`cmd > encode@pdeu: ~ ${output.cmd}`}</div>
+                                        <div className="mt-3">{`encode@pdeu: ~ ${output.cmd}`}</div>
                                         <div className={`mt-1 ${output.isValidCmd ? "text-green-500" : "text-red-500"}`}>
                                             {output.output}
                                         </div>

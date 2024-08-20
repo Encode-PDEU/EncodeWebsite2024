@@ -9,7 +9,6 @@ function formatDate(isoDate) {
     return date.toLocaleDateString(undefined, options);
 }
 
-
 function EventCard({ title, date, type = "Workshop", description, isVisible }) {
     const cardRef = useRef(null);
     const [visible, setVisible] = useState(isVisible);
@@ -30,7 +29,7 @@ function EventCard({ title, date, type = "Workshop", description, isVisible }) {
     return (
         <div
             ref={cardRef}
-            className={`flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-5px] transition-all outline-1 hover:outline outline-[#00ff7b] ${visible ? 'opacity-100' : 'opacity-0'}`}
+            className={`flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-10px] transition-all outline-1 hover:outline outline-[#00ff7b] ${visible ? 'opacity-100' : 'opacity-0'}`}
         >
             <div className="flex flex-col pb-2 gap-2">
                 <div className="flex justify-between pb-2 gap-10">

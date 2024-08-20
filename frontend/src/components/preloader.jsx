@@ -1,5 +1,5 @@
+import 'ldrs/jelly';
 import { useEffect, useRef, useState } from "react";
-import 'ldrs/jelly'
 
 export default function Preloader({ setPreloaderEnded }) {
 

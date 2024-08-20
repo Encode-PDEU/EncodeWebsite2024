@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import gsap from 'gsap';
 import { Button } from '@nextui-org/button';
-import { horizontalLoop } from "../../gsapLoopHelper"
+import gsap from 'gsap';
+import { useEffect, useRef, useState } from 'react';
+import { horizontalLoop } from "../../gsapLoopHelper";
 
 const imageUrls = [
     'https://i.ibb.co/KNhB2Dz/img1.jpg',

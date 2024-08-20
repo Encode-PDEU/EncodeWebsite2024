@@ -1,11 +1,8 @@
 import { Button } from "@nextui-org/button";
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import logo from "../encode_logo.png"
-import { Menu01Icon, Cancel01Icon } from "../components/icons"
-import React, { forwardRef } from 'react';
-import { useRef } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Cancel01Icon, Menu01Icon } from "../components/icons";
+import logo from "../encode_logo.png";
 
 const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, ref) => {
     return (
