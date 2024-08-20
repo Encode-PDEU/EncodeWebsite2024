@@ -28,6 +28,7 @@
     "framer-motion": "~11.1.1",
     "ldrs": "^1.0.2",
     "lenis": "^1.1.9",
+    "locomotive-scroll": "^5.0.0-beta.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.23.0",

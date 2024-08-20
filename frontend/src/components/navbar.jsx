@@ -49,19 +49,19 @@ export default function Navbar() {
             </div>
             <div className="gap-3 items-center sm:flex hidden">
                 <span className="text-4xl text-foreground-300">[</span>
-                <Button radius="none" variant="flat" color="success" onClick={handleClickHome}>
+                <Button radius="none" variant="light" color="success" onClick={handleClickHome}>
                     home
                 </Button>
-                <Button radius="none" variant="flat" color="success">
+                <Button radius="none" variant="light" color="success">
                     about
                 </Button>
-                <Button radius="none" variant="flat" color="success">
+                <Button radius="none" variant="light" color="success">
                     team
                 </Button>
-                <Button radius="none" variant="flat" color="success">
+                <Button radius="none" variant="light" color="success">
                     gallery
                 </Button>
-                <Button radius="none" variant="flat" color="success">
+                <Button radius="none" variant="light" color="success">
                     contact
                 </Button>
                 <span className="text-4xl text-foreground-300">]</span>

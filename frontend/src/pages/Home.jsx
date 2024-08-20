@@ -3,20 +3,33 @@ import { Button } from "@nextui-org/button";
 import { SentIcon } from "../components/icons"
 import Team from "../components/Home/Team";
 import Gallery from "../components/Home/Gallery";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
 import Quote from "../components/Home/Quote";
 
 export default function Home({ preloaderEnded }) {
+
+    const navigate = useNavigate();
+
+    const welcomeTextRef = useRef(null);
+    const convoHistoryRef = useRef(null);
+
     const [cmd, setCmd] = useState("");
-    const [output, setOutput] = useState("");
+    const [outputs, setOutputs] = useState([]);
     const [logoDis, setLogoDis] = useState(true);
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [welcomeTextVisible, setWelcomeTextVisible] = useState(false);
-    const welcomeTextRef = useRef(null);
-    const navigate = useNavigate()
+    const [isOverflowed, setIsOverflowed] = useState(false);
+
+    // useEffect(() => {
+    //     const existingHistory = localStorage.getItem('commandHistory');
+    //     if (!existingHistory) return;
+    //     let commandHistory = existingHistory ? JSON.parse(existingHistory) : [];
+    //     commandHistory.push(newCmd + "\n")
+    //     localStorage.setItem('commandHistory', JSON.stringify(commandHistory));
+    // }, [outputs]);
 
     useEffect(() => {
         let hasHappenedOnce = false;
@@ -33,36 +46,126 @@ export default function Home({ preloaderEnded }) {
         if (welcomeTextRef.current) observer.observe(welcomeTextRef.current);
 
         return () => {
-            if (welcomeTextRef.current) {
-                observer.unobserve(welcomeTextRef.current);
-            }
+            if (welcomeTextRef.current) observer.unobserve(welcomeTextRef.current);
         };
     }, []);
 
+    useLayoutEffect(() => {
+        scrollToBottom();
+    }, [outputs]);
+
+    useEffect(() => {
+    }, [isOverflowed]);
+
+    const checkOverflow = () => {
+        const container = convoHistoryRef.current;
+        setIsOverflowed(container.scrollHeight > container.clientHeight)
+    };
+
+    const scrollToBottom = () => {
+        const container = convoHistoryRef.current;
+        if (container) container.scrollTop = container.scrollHeight;
+    };
+
     const handleCommand = (cmd) => {
+        let output;
+        let isValidCmd = true;
+        console.log(cmd.toLowerCase());
         switch (cmd.toLowerCase()) {
-            case 'help':
-                return "Available commands:\n1. help - Display this help message\n2. about - Go to the About page";
-            case 'home':
-                navigate('/');
-                return "You are already on the Home page.";
-            case 'about':
-                navigate('/about');
-                return "Redirecting to the About page...";
-            case 'team':
-                navigate('/team');
-                return "Redirecting to the Team page...";
-            case 'gallery':
-                navigate('/gallery');
-                return "Redirecting to the Gallery page...";
-            case 'contact':
-                navigate('/contact');
-                return "Redirecting to the Contact page...";
-            case '':
-                return "No Input received. Please enter a valid input.";
+            case "help":
+                output = (
+                    <>
+                        Available commands:<br /><br />
+                        <span className="font-bold">help</span> - Display this help message<br />
+                        <span className="font-bold">clear</span> - Clear Screen <br />
+
+                        <br /><span className="font-bold">------- Information -------</span><br />
+                        <span className="font-bold">join</span> - How to join Encode? <br />
+
+                        <br /><span className="font-bold">------- Navigation -------</span><br />
+                        <span className="font-bold">home</span> - Go to the Home page (You are already at home page) <br />
+                        <span className="font-bold">about</span> - Go to the About page <br />
+                        <span className="font-bold">team</span> - Go to the Team page <br />
+                        <span className="font-bold">gallery</span> - Go to the Gallery page <br />
+                        <span className="font-bold">contact</span> - Go to the Contact page <br />
+
+                        <br />------- Other ------- <br />
+                        coming soon <br />
+                        socials <br />
+
+                        <br /> <br />
+                    </>
+                );
+                break;
+            case "home":
+                navigate("/");
+                output = "You are already on the Home page.";
+                break;
+            case "about":
+                navigate("/about");
+                output = "Redirecting to the About page...";
+                break;
+            case "team":
+                navigate("/team");
+                output = "Redirecting to the Team page...";
+                break;
+            case "gallery":
+                navigate("/gallery");
+                output = "Redirecting to the Gallery page...";
+                break;
+            case "contact":
+                navigate("/contact");
+                output = "Redirecting to the Contact page...";
+                break;
+            case "":
+            case "^c":
+                output = "";
+                isValidCmd = false;
+                break;
             default:
-                return `${cmd} : The term '${cmd}' is not recognized as the name of a cmdlet, function, script file, or operable program.Check the spelling of the name, or if a path was included, verify that the path is correct and try again.;`
+                output = `${cmd} : The term '${cmd}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`;
+                isValidCmd = false;
         }
+
+        return { output, isValidCmd };
+    };
+
+    const handleChange = (e) => {
+        setCmd(e.target.value);
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.ctrlKey && event.key === 'c') {
+            event.preventDefault();
+            setCmd("^C")
+            setOutputs((prevOutputs) => {
+                const { output, isValidCmd } = handleCommand("^C");
+                const newId = prevOutputs.length + 1;
+                return [...prevOutputs, { id: newId, output, cmd, isValidCmd }];
+            });
+            setCmd("");
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (cmd === "clear") {
+            setLogoDis(true);
+            setWelcomeTextVisible(true);
+            setOutputs([]);
+        }
+        else {
+            if (logoDis) setLogoDis(false);
+            setOutputs((prevOutputs) => {
+                const { output, isValidCmd } = handleCommand(cmd);
+                const newId = prevOutputs.length + 1;
+                return [...prevOutputs, { id: newId, output, cmd, isValidCmd }];
+            });
+        }
+        setCmd("");
+
+        if (!isOverflowed) checkOverflow();
     };
 
     const text = "The Computer Science Club of PDEU";
@@ -79,17 +182,6 @@ export default function Home({ preloaderEnded }) {
 
     }, [currentIndex, preloaderEnded]);
 
-
-    const handleChange = (e) => {
-        setCmd(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setLogoDis(false);
-        setOutput(handleCommand(cmd));
-        setCmd("");
-    };
 
     return (
         <div className="flex p-[3em] min-h-[100vh] transition-height flex-col sm:gap-0 gap-4 items-center justify-center">
@@ -123,12 +215,20 @@ export default function Home({ preloaderEnded }) {
                         </span>
                     </div>
 
-                    <div className={logoDis ? "hidden" : "flex items-start w-full h-full align-top mt-12 px-6"}>
-                        <span className="text-left w-full sm:text-2xl text-xl font-normal">
-                            {output}
+                    <div className={logoDis ? "hidden" : `${!isOverflowed ? "items-start" : ""} flex w-full h-full mb-20 align-top mt-12 px-6 overflow-y-scroll`} ref={convoHistoryRef}>
+                        <span className="text-left w-full text-l font-normal">
+                            {outputs.map((output) => {
+                                return (
+                                    <div key={output.id}>
+                                        <div className="mt-3">{`cmd > encode@pdeu: ~ ${output.cmd}`}</div>
+                                        <div className={`mt-1 ${output.isValidCmd ? "text-green-500" : "text-red-500"}`}>
+                                            {output.output}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </span>
                     </div>
-
                     <form
                         className="absolute sm:bottom-5 bottom-2 sm:w-[98%] w-[95%] flex items-center gap-2"
                         action=""
@@ -144,6 +244,7 @@ export default function Home({ preloaderEnded }) {
                             variant="bordered"
                             startContent={<span className="mr-5 text-success">{">"}</span>}
                             placeholder="Enter 'help' for list of all commands"
+                            onKeyDown={handleKeyDown}
                         />
                         <Button isIconOnly size="lg" color={"success"} variant="shadow" onClick={handleSubmit}>
                             <SentIcon />
