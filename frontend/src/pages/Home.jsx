@@ -6,13 +6,12 @@ import Gallery from "../components/Home/Gallery";
 import Quote from "../components/Home/Quote";
 import Team from "../components/Home/Team";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
-import { SentIcon } from "../components/icons";
+import { SentIcon, TerminalIcon } from "../components/icons";
 import linkedin from "../images/linkedin.webp"
 import instagram from "../images/instagram.webp"
 import twitter from "../images/twitter.webp"
 
 export default function Home({ preloaderEnded }) {
-
     const navigate = useNavigate();
 
     const welcomeTextRef = useRef(null);
@@ -35,13 +34,16 @@ export default function Home({ preloaderEnded }) {
     // }, [outputs]);
 
     useEffect(() => {
+
+        window.scrollTo(0, 0);
+
         let hasHappenedOnce = false;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setTimeout(() => {
                     setWelcomeTextVisible(entry.isIntersecting);
                     hasHappenedOnce = true;
-                }, !hasHappenedOnce ? 2100 : 0);
+                }, (!hasHappenedOnce && !preloaderEnded) ? 2100 : 0);
             },
             { threshold: 0.1 }
         );
@@ -73,7 +75,6 @@ export default function Home({ preloaderEnded }) {
     const handleCommand = (cmd) => {
         let output;
         let isValidCmd = true;
-        console.log(cmd.toLowerCase());
         switch (cmd.toLowerCase()) {
             case "help":
                 output = (
@@ -105,7 +106,6 @@ export default function Home({ preloaderEnded }) {
             case "socials":
                 output = (
                     <div className="flex h-fit gap-2 flex-col">
-
 
                         <a className="flex gap-3 items-center hover:underline decoration-white cursor-pointer"
                             href="https://www.linkedin.com/company/encode-pdpu/" target="_blank">
@@ -215,28 +215,37 @@ export default function Home({ preloaderEnded }) {
 
     return (
         <div className="flex p-[3em] min-h-[100vh] transition-height flex-col sm:gap-0 gap-4 items-center justify-center">
-            <div className="min-h-[100vh] transition-height flex items-center justify-center p-[1em] w-screen mt-[-30px]">
-                <div className="flex h-[80dvh] w-full transition-height flex-col items-center justify-center sm:w-[80%] bg-gray-500 bg-opacity-10 outline outline-1 outline-[#00ff7b71] sm:rounded-3xl rounded-2xl relative green_shadow">
-                    <div className="absolute top-0 w-full h-[35px] bg-gray-500  bg-opacity-20 rounded-t-3xl p-2 pl-5 text-white text-opacity-40 justify-between flex">
-                        <span>{"cmd > { ! }"}</span>
 
-                        <div className="pr-3 flex items-center gap-2">
-                            <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
+            <div className="h-[50rem] absolute w-full dark:bg-black bg-white dark:bg-grid-[#00ff7b]/[0.2] bg-grid-black/[0.2] top-0 z-[-1] flex items-center justify-center">
+                <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]">
+                </div>
+            </div>
+
+            <div className="min-h-[100vh] transition-height flex items-center justify-center p-[1em] w-screen mt-[-30px]">
+                <div className="flex h-[80dvh] w-full transition-height flex-col items-center justify-center sm:w-[90%] bg-gray-900 bg-opacity-5 backdrop-blur-[6px] outline outline-1 outline-gray-600 sm:rounded-none rounded-none relative green_shadow z-[1]">
+                    <div className="absolute top-0 w-full h-[35px] bg-gray-500 bg-opacity-20 rounded-t-none p-2  text-white text-opacity-40 justify-between flex">
+
+                        <div className="flex gap-2">
+                            <TerminalIcon color="#00ff7b90" />
+                            <span>{"cmd > { ! }"}</span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <div className="rounded-none bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
                                 -
                             </div>
-                            <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
+                            <div className="rounded-none bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
                                 ▢
                             </div>
-                            <div className="rounded-full bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
+                            <div className="rounded-none bg-gray-500 bg-opacity-20 outline-1 outline-gray-600 outline w-[23px] h-[23px] flex items-center justify-center">
                                 X
                             </div>
                         </div>
                     </div>
 
-                    <div className={logoDis ? "flex flex-col sm:gap-0 gap-3" : "hidden"} ref={welcomeTextRef}>
+                    <div className={logoDis ? "flex flex-col sm:gap-0 gap-2" : "hidden"} ref={welcomeTextRef}>
                         <div className="overflow-hidden flex">
-                            <span className={`text-center w-full sm:text-7xl text-3xl transition-all duration-500
-                            font-bold ${welcomeTextVisible ? "transformVisible" : "transformInvisible"}`}>
+                            <span className={`text-center w-full sm:text-7xl text-3xl transition-all bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 duration-500 font-bold ${welcomeTextVisible ? "transformVisible" : "transformInvisible"}`}>
                                 Welcome to Encode
                             </span>
                         </div>
@@ -260,7 +269,7 @@ export default function Home({ preloaderEnded }) {
                         </span>
                     </div>
                     <form
-                        className="absolute sm:bottom-5 bottom-2 sm:w-[98%] w-[95%] flex items-center gap-2"
+                        className="absolute bottom-3 sm:w-[98%] w-[95%] flex items-center gap-2"
                         action=""
                         onSubmit={handleSubmit}
                     >
@@ -270,13 +279,17 @@ export default function Home({ preloaderEnded }) {
                             isClearable
                             onChange={handleChange}
                             value={cmd}
+                            radius="none"
                             color={"success"}
                             variant="bordered"
                             startContent={<span className="mr-5 text-success">{">"}</span>}
                             placeholder="Enter 'help' for list of all commands"
                             onKeyDown={handleKeyDown}
                         />
-                        <Button isIconOnly size="lg" color={"success"} variant="shadow" onClick={handleSubmit}>
+                        <Button isIconOnly
+                            size="lg"
+                            radius="none"
+                            color={"success"} variant="shadow" onClick={handleSubmit}>
                             <SentIcon />
                         </Button>
                     </form>

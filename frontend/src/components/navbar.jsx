@@ -1,6 +1,6 @@
 import { Button } from "@nextui-org/button";
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Cancel01Icon, Menu01Icon } from "../components/icons";
 import logo from "../encode_logo.png";
 
@@ -24,13 +24,8 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
 });
 
 export default function Navbar() {
-    const navigate = useNavigate();
     const menuRef = useRef(null);
     const [toggleMenuOpen, setToggleMenuOpen] = useState(true)
-
-    const handleClickHome = () => {
-        navigate("/");
-    };
 
     useEffect(() => {
         if (menuRef.current) menuRef.current.style.top = toggleMenuOpen ? `-${menuRef.current.clientHeight + 10}px` : "0px"
@@ -40,21 +35,29 @@ export default function Navbar() {
         <div className="w-full flex top-0 fixed p-[1em] justify-between items-center backdrop-blur-2xl z-10 bg-black bg-opacity-40">
             <div className="flex items-center gap-3 justify-between">
                 <img src={logo} height={"35px"} width={"35px"} className="object-scale-down mt-[-2px]" />
-                <span className=" text-2xl cursor-pointer hover:underline transition-all  minecraft" onClick={handleClickHome}>
-                    Encode
-                </span>
+                <Link to="/">
+                    <span className=" text-2xl cursor-pointer hover:underline transition-all  minecraft" >
+                        Encode
+                    </span>
+                </Link>
             </div>
             <div className="gap-3 items-center sm:flex hidden">
                 <span className="text-4xl text-foreground-300">[</span>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    home
-                </Button>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    about
-                </Button>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    team
-                </Button>
+                <Link to="/">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        home
+                    </Button>
+                </Link>
+                <Link to="about">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        about
+                    </Button>
+                </Link>
+                <Link to="team">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        team
+                    </Button>
+                </Link>
                 <Button className="quote-button" radius="none" variant="light" color="success">
                     gallery
                 </Button>

@@ -4,6 +4,7 @@ import Preloader from "./components/preloader";
 import { useState } from "react";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import TeamPage from "./pages/Team";
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
@@ -73,14 +74,12 @@ export default function App() {
     setIsMouseDown(false);
   };
 
-
   return (
-    <main className="dark bg-black min-h-screen text-foreground overflow-x-hidden"
+    <main className="dark min-h-screen text-foreground overflow-x-hidden"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
-
       <div className="sm:flex hidden">
         <MouseEffect position={position} delayedPosition={delayedPosition} isMouseDown={isMouseDown} />
       </div>
@@ -88,6 +87,7 @@ export default function App() {
       <Preloader setPreloaderEnded={setPreloaderEnded} />
       <Routes>
         <Route element={<Home preloaderEnded={preloaderEnded} />} path="/" />
+        <Route element={<TeamPage />} path="team" />
       </Routes>
       <Footer />
     </main>

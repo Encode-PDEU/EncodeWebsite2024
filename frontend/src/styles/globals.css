@@ -19,6 +19,13 @@
 html,
 body {
   overflow-x: hidden;
+  z-index: 1;
+}
+
+body {
+  background-color: black;
+  z-index: -5;
+  position: relative;
 }
 
 @keyframes rubberBand {

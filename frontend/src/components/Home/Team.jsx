@@ -1,8 +1,6 @@
-import { Button } from "@nextui-org/button"
-// import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { useRef } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { Button } from "@nextui-org/button";
+import { TeamCard } from "../../pages/Team";
+import { Link } from "react-router-dom";
 
 const teamMembers = [
     {
@@ -25,7 +23,7 @@ const teamMembers = [
     },
     {
         name: "Dhyan Shah",
-        position: "Technical Heads Head",
+        position: "Technical Head",
         imgsrc: "https://i.imgur.com/PTQeHnF.png",
         type: "executives"
     },
@@ -127,50 +125,7 @@ const teamMembers = [
     }
 ];
 
-export function TeamCard({ imgsrc = "https://links.aryanranderiya.com/l/default_user", name, position }) {
-    const cardRef = useRef(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => { setVisible(entry.isIntersecting); },
-            { threshold: 0.3 }
-        );
-
-        if (cardRef.current) observer.observe(cardRef.current);
-
-        return () => {
-            if (cardRef.current) observer.unobserve(cardRef.current);
-        };
-    }, []);
-
-    return (
-        <div className={`flex flex-col p-[2em] items-center gap-5 bg-[#00ff7b] bg-opacity-15 rounded-none z-[1] hover:translate-y-[-10px] transition-all outline-1 hover:outline outline-[#00ff7b] ${visible ? 'opacity-100' : 'opacity-0'}`} ref={cardRef}>
-            <img src={imgsrc} className="w-[170px] h-[170px] min-w-[170px] min-h-[170px] max-h-[170px] rounded-full" />
-            <div className="flex flex-col items-center">
-                <span className="text-2xl helvetica">{name}</span>
-                <span className="text-lg text-foreground-400 minecraft text-wrap w-[200px] text-center">{position}</span>
-            </div>
-        </div>
-    )
-}
-
 export default function Team() {
-
-
-    const groupByType = (members) => {
-        return members.reduce((groups, member) => {
-            const { type } = member;
-            if (!groups[type]) {
-                groups[type] = [];
-            }
-            groups[type].push(member);
-            return groups;
-        }, {});
-    };
-
-    const groupedMembers = groupByType(teamMembers);
-
 
     return (
         <section className="min-h-screen py-[3em] justify-center h-fit w-full flex flex-col items-center gap-6">
@@ -192,32 +147,12 @@ export default function Team() {
                 }
                 )}
 
-                {/* <Accordion variant="light" itemClasses={{ heading: "md:min-w-[70vw] justify-center mb-4" }}>
-                    {Object.entries(groupedMembers).map(([type, members], index) => (
-
-                        <AccordionItem key={type}
-                            aria-label={`Accordion ${index + 1}`}
-                            title={`${ type.charAt(0).toUpperCase() + type.slice(1) } `}
-
-                            defaultExpandedKeys={["executives"]}
-                        >
-                            {console.log(type)}
-                            <div className="flex flex-wrap gap-3 md:max-w-[70vw] justify-center mb-4">
-                                {members.map((member, idx) => (
-                                    <TeamCard
-                                        key={idx}
-                                        name={member.name}
-                                        position={member.position}
-                                        imgsrc={member.imgsrc}
-                                        type={member.type}
-                                    />
-                                ))}
-                            </div>
-                        </AccordionItem>
-                    ))}
-                </Accordion> */}
             </div>
-            <Button color="success" radius="none" size="lg" className="font-semibold text-lg">View All Members</Button>
+            <Link to={"team"}>
+                <Button color="success" radius="none" size="lg" className="font-semibold text-lg">
+                    View All Members
+                </Button>
+            </Link>
         </section >
     )
 }

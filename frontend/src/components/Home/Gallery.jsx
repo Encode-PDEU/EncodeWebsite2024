@@ -128,7 +128,7 @@ export default function Gallery() {
                 )}
             </div>
 
-            <Button color="success" radius="none" size="lg" className="mt-5 font-semibold text-lg">View Gallery</Button>
+            <Button color="success" radius="none" size="lg" className="mt-5 font-semibold text-lg">View More Photos</Button>
         </section>
     );
 }

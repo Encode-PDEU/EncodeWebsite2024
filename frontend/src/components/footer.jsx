@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     const [text, setText] = useState(["E", "N", "C", "O", "D", "E"]);
@@ -76,9 +77,13 @@ export default function Footer() {
                         PAGES
                     </span>
 
-                    <span className="z-[1] cursor-pointer">HOME</span>
+                    <Link to="/">
+                        <span className="z-[1] cursor-pointer">HOME</span>
+                    </Link>
                     <span className="z-[1] cursor-pointer">ABOUT</span>
-                    <span className="z-[1] cursor-pointer">TEAM</span>
+                    <Link to="team">
+                        <span className="z-[1] cursor-pointer">TEAM</span>
+                    </Link>
                     <span className="z-[1] cursor-pointer">CONTACT</span>
                 </div>
             </div>

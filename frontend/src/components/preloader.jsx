@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Preloader({ setPreloaderEnded }) {
-
+    const location = useLocation();
     const preloader = useRef(null);
     const preloaderWhite = useRef(null);
     const preloaderText = useRef(null);
@@ -9,9 +10,13 @@ export default function Preloader({ setPreloaderEnded }) {
     const intervalIdRef = useRef(null);
 
     const [timerCount, setTimerCount] = useState(0);
-    const [intervalTime, setIntervalTime] = useState(6);
+    const [intervalTime, setIntervalTime] = useState(location.pathname === "/" ? 6 : 1);
     const [loadingDots, setLoadingDots] = useState("...");
     const [text, setText] = useState(Array(10).fill());
+
+    // useEffect(() => {
+    //     console.log(location.pathname === "/");
+    // }, [location]);
 
     function getRandomCharacter() {
         const chars = ";!@#$%^&*(){}[]Ø;!@#$%^&*(){}[]Ø;!@#$%^&*(){}[]Ø"
@@ -41,16 +46,19 @@ export default function Preloader({ setPreloaderEnded }) {
                         return prevCount;
                     }
 
-                    if (prevCount === 60) setIntervalTime(10);
-                    if (prevCount === 75) setIntervalTime(20);
-                    if (prevCount === 90) setIntervalTime(75);
+                    if (location.pathname === "/") {
+                        if (prevCount === 60) setIntervalTime(10);
+                        if (prevCount === 75) setIntervalTime(20);
+                        if (prevCount === 90) setIntervalTime(75);
 
-                    if (prevCount >= 82 && prevCount <= 90)
-                        setText(["l", "o", "a", "d", "i", "n", "g", " ", "e", "n", "c", "o", "d", "e", " ", "w", "e", "b", "s", "i", "t", "e"]);
-                    else if (prevCount >= 95 && prevCount <= 100) setText(["w", "e", "l", "c", "o", "m", "e", "."]);
-                    else setText((text) => text.map(() => getRandomCharacter()))
 
-                    return prevCount + 1;
+                        if (prevCount >= 82 && prevCount <= 90)
+                            setText(["l", "o", "a", "d", "i", "n", "g", " ", "e", "n", "c", "o", "d", "e", " ", "w", "e", "b", "s", "i", "t", "e"]);
+                        else if (prevCount >= 95 && prevCount <= 100) setText(["w", "e", "l", "c", "o", "m", "e", "."]);
+                        else setText((text) => text.map(() => getRandomCharacter()))
+                    }
+
+                    return prevCount + (location.pathname === "/" ? 1 : 5);
                 });
             }, intervalTime);
         };
@@ -74,7 +82,12 @@ export default function Preloader({ setPreloaderEnded }) {
         <div className="fixed top-0 z-20">
             <div className="preloader1 flex justify-center bg-black" ref={preloader}>
 
-                <div className="flex w-full h-full justify-center items-center transition-opacity flex-col" ref={preloaderSpinner}>
+                <div className="h-[50rem] absolute w-full dark:bg-black bg-white dark:bg-grid-[white]/[0.2] bg-grid-black/[0.2] top-0 z-0 flex items-center justify-center opacity-70">
+                    <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]">
+                    </div>
+                </div>
+
+                <div className="flex w-full h-full justify-center items-center transition-opacity flex-col z-[1] relative" ref={preloaderSpinner}>
 
                     <span className="text-xl">
                         {text.map((letter) => letter)}
@@ -92,7 +105,7 @@ export default function Preloader({ setPreloaderEnded }) {
                     ref={preloaderText}
                 >
                     <span className="uppercase self-center sm:text-[2rem] leading-none sm:mb-[-4rem]">loading{loadingDots}</span>
-                    <span className="sm:text-[7rem] text-[3rem] leading-none minecraft font-normal">
+                    <span className="sm:text-[7rem] text-[3rem] leading-none font-bold">
                         {timerCount % 3 === 0 && timerCount !== 100 ?
                             getRandomCharacter() + getRandomCharacter() + getRandomCharacter()
                             : timerCount}%
