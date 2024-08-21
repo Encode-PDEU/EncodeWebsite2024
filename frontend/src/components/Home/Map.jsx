@@ -9,10 +9,10 @@ export default function Map() {
 
         <div className="flex flex-col items-center gap-2">
             <span className="font-semibold text-5xl">Alumni</span>
-            <span className="font-normal text-md text-foreground-500">Meet past members of encode!</span>
+            <span className="font-normal text-md text-foreground-500">Meet past alumni of encode!</span>
         </div>
 
-        <ComposableMap className="z-[19] scale-y-[0.8] sm:ml-[-7em] sm:mt-[-10em]">
+        <ComposableMap className="z-[19] scale-y-[0.8] sm:ml-[-7em] sm:mt-[-90px]">
             <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                     geographies.map((geo) => (
