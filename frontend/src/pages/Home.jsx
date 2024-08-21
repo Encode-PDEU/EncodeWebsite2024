@@ -10,6 +10,7 @@ import { SentIcon, TerminalIcon } from "../components/icons";
 import linkedin from "../images/linkedin.webp"
 import instagram from "../images/instagram.webp"
 import twitter from "../images/twitter.webp"
+import Map from "../components/Home/Map"
 
 export default function Home({ preloaderEnded }) {
     const navigate = useNavigate();
@@ -299,6 +300,7 @@ export default function Home({ preloaderEnded }) {
             <UpcomingEvents />
             <Team />
             <Gallery />
+            <Map />
             <Quote />
         </div>
     );
