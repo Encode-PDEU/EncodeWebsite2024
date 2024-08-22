@@ -299,8 +299,8 @@ export default function Home({ preloaderEnded }) {
 
             <UpcomingEvents />
             <Team />
-            <Gallery />
             <Map />
+            <Gallery />
             <Quote />
         </div>
     );

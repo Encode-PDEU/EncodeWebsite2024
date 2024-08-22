@@ -33,15 +33,15 @@ function EventCard({ title, date, type = "Workshop", description, isVisible, reg
     return (
         <div
             ref={cardRef}
-            className={`flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-10px] transition-all outline-1 hover:outline outline-[#00ff7b] sm:max-w-[23vw] sm:min-w-[23vw]  max-w-[90vw] min-w-[90vw] overflow-hidden ${visible ? 'opacity-100' : 'opacity-0'}`}
+            className={`flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-10px] transition-all outline-1 hover:outline outline-[#00ff7b] sm:max-w-[20vw] sm:min-w-[20vw] max-w-[90vw] min-w-[90vw] overflow-hidden ${visible ? 'opacity-100' : 'opacity-0'}`}
         >
             <div className="flex flex-col pb-2 gap-2">
                 <div className="flex justify-between pb-2 gap-2 flex-wrap">
                     <Chip color={isEventFinished ? "danger" : "success"} variant="dot">{formatDate(date)}</Chip>
                     <Chip color="success" variant="flat">{type}</Chip>
                 </div>
-                <span className="text-2xl sm:max-w-[20vw] sm:min-w-[20vw]">{title}</span>
-                <span className="text-foreground-500 sm:max-w-[20vw] sm:min-w-[20vw] helvetica">{description}</span>
+                <span className="text-2xl sm:max-w-[18vw] sm:min-w-[18vw]">{title}</span>
+                <span className="text-foreground-500 sm:max-w-[18vw] sm:min-w-[18vw] helvetica">{description}</span>
             </div>
 
             {isEventFinished ? (

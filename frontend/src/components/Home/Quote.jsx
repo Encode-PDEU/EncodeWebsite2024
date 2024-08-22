@@ -4,7 +4,6 @@ import { useRef, useEffect, useState } from "react";
 export default function Quote() {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
-    const [imageHovered, setImageHovered] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -20,8 +19,6 @@ export default function Quote() {
             if (sectionRef.current) observer.unobserve(sectionRef.current);
         };
     }, []);
-
-    useEffect(() => { console.log(imageHovered); }, [imageHovered]);
 
     return (
         <section
@@ -39,7 +36,7 @@ export default function Quote() {
             <div className={`z-[2] w-full flex flex-col sm:gap-0 gap-5 sm:min-h-[80vh] min-h-[60vh] justify-center`}>
 
                 <div className="overflow-hidden flex justify-center">
-                    <span className={`text-start transition-transform duration-1000 ${isVisible ? 'transformVisible' : 'transformInvisible'} ${imageHovered ? "" : ""}`}>We're Architects of Change
+                    <span className={`text-start transition-transform duration-1000 ${isVisible ? 'transformVisible' : 'transformInvisible'}`}>We're Architects of Change
                     </span>
                 </div>
 

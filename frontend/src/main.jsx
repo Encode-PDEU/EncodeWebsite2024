@@ -10,9 +10,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
-        <ReactLenis root>
-          <App />
-        </ReactLenis>
+        {/* <ReactLenis root> */}
+        <App />
+        {/* </ReactLenis> */}
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
