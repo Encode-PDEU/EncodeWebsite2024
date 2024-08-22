@@ -40,9 +40,9 @@ export default function Preloader({ setPreloaderEnded }) {
 
                         setTimeout(() => {
                             document.documentElement.style.overflowY = 'scroll';
+                            setPreloaderEnded(true);
                         }, 100);
 
-                        setPreloaderEnded(true);
                         return prevCount;
                     }
 

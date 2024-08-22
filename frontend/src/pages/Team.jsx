@@ -176,7 +176,7 @@ export default function TeamPage() {
     return (
         <section className="sm:min-h-[70vh] min-h-screen pt-[160px] justify-start h-fit w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl">The goo</span>
+                <span className="font-semibold text-5xl">The Team</span>
                 <span className="font-normal text-md text-foreground-500">Meet the team of encode!</span>
             </div>
             <div className="flex sm:w-fit w-full sm:p-0 p-[2em]">

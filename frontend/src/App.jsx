@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Preloader from "./components/preloader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import TeamPage from "./pages/Team";
 import About from "./pages/About";
+import { ReactLenis } from 'lenis/react'
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
@@ -58,6 +59,7 @@ export default function App() {
   const [delayedPosition, setDelayedPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [preloaderEnded, setPreloaderEnded] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const handleMouseMove = (event) => {
     setPosition({ x: event.clientX, y: event.clientY });
@@ -75,12 +77,30 @@ export default function App() {
     setIsMouseDown(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      setScrollProgress(scrollPercent);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <main className="dark min-h-screen text-foreground overflow-x-hidden"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
+      <div className="w-full h-[2px] fixed top-0 bg-[#00ff7b] z-20" style={{ width: `${scrollProgress}%` }}>
+      </div>
       <div className="sm:flex hidden">
         <MouseEffect position={position} delayedPosition={delayedPosition} isMouseDown={isMouseDown} />
       </div>
@@ -89,7 +109,11 @@ export default function App() {
       <Routes>
         <Route element={<Home preloaderEnded={preloaderEnded} />} path="/" />
         <Route element={<TeamPage />} path="team" />
-        <Route element={ <About preloaderEnded={preloaderEnded}/>} path="about" ></Route>
+        <Route element={
+          <ReactLenis root>
+            <About preloaderEnded={preloaderEnded} />
+          </ReactLenis>
+        } path="about" ></Route>
       </Routes>
       <Footer />
     </main>
