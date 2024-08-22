@@ -5,6 +5,7 @@ import { useState } from "react";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import TeamPage from "./pages/Team";
+import About from "./pages/About";
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
@@ -88,6 +89,7 @@ export default function App() {
       <Routes>
         <Route element={<Home preloaderEnded={preloaderEnded} />} path="/" />
         <Route element={<TeamPage />} path="team" />
+        <Route element={ <About preloaderEnded={preloaderEnded}/>} path="about" ></Route>
       </Routes>
       <Footer />
     </main>
