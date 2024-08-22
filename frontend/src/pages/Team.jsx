@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useEffect, useRef, useState } from "react";
 
-const teamMembers = [
+export const teamMembers = [
     {
         name: "Anokhi Shah",
         position: "President",
@@ -17,7 +17,7 @@ const teamMembers = [
     {
         name: "Diya Mirani",
         position: "Treasurer",
-        imgsrc: "https://i.imgur.com/LYXsFsQ.jpeg",
+        imgsrc: "https://cdn.discordapp.com/attachments/1274834605651791885/1276261290473554043/image.png?ex=66c8e273&is=66c790f3&hm=4b25cf80a81cb051ab7405a00d6013ce027ac97a7d6336b485cecbb4d1a210bd&",
         type: "executives"
     },
     {
@@ -145,9 +145,9 @@ export function TeamCard({ imgsrc = "https://links.aryanranderiya.com/l/default_
 
     return (
         <div className={`flex flex-col p-[2em] items-center gap-5 bg-[#00ff7b] bg-opacity-15 rounded-none z-[1] hover:translate-y-[-5px] w-[260px]  transition-all outline-1 hover:outline outline-[#00ff7b] ${visible ? 'opacity-100' : 'opacity-0'}`} ref={cardRef}>
-            <img src={imgsrc} className="w-[170px] h-[170px] min-w-[170px] min-h-[170px] max-h-[170px] rounded-full" />
+            <img src={imgsrc} className="w-[170px] h-[170px] min-w-[170px] min-h-[170px] max-h-[170px] rounded-full object-cover" />
             <div className="flex flex-col items-center">
-                <span className="text-2xl helvetica">{name}</span>
+                <span className="text-2xl helvetica text-center ">{name}</span>
                 <span className="text-lg text-foreground-400 minecraft text-wrap w-[200px] text-center">{position}</span>
             </div>
         </div>
@@ -176,7 +176,7 @@ export default function TeamPage() {
     return (
         <section className="sm:min-h-[70vh] min-h-screen pt-[160px] justify-start h-fit w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl">The Team</span>
+                <span className="font-semibold text-5xl">The goo</span>
                 <span className="font-normal text-md text-foreground-500">Meet the team of encode!</span>
             </div>
             <div className="flex sm:w-fit w-full sm:p-0 p-[2em]">

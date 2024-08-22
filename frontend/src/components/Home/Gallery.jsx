@@ -2,8 +2,20 @@ import { Button } from '@nextui-org/button';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { horizontalLoop } from "../../gsapLoopHelper";
+import image1 from "../../images/gallery/1.webp"
+import image2 from "../../images/gallery/2.webp"
+import image3 from "../../images/gallery/3.webp"
+import image4 from "../../images/gallery/4.webp"
+import image5 from "../../images/gallery/5.webp"
+import image6 from "../../images/gallery/6.webp"
 
 const imageUrls = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
     'https://i.ibb.co/KNhB2Dz/img1.jpg',
     'https://i.ibb.co/JtbNDgb/img2.jpg',
     'https://i.ibb.co/X4xzJfz/img3.jpg',
@@ -127,6 +139,7 @@ export default function Gallery() {
                     <GalleryImage key={index} url={url} type={1} />
                 )}
             </div>
+
 
             <Button color="success" radius="none" size="lg" className="mt-5 font-semibold text-lg">View More Photos</Button>
         </section>

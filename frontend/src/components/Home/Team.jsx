@@ -1,136 +1,14 @@
 import { Button } from "@nextui-org/button";
 import { TeamCard } from "../../pages/Team";
 import { Link } from "react-router-dom";
-
-const teamMembers = [
-    {
-        name: "Anokhi Shah",
-        position: "President",
-        imgsrc: "https://i.imgur.com/2SOGOOG.png",
-        type: "executives"
-    },
-    {
-        name: "Saumya Talwani",
-        position: "Vice President",
-        imgsrc: "https://i.imgur.com/yXbXGMx.jpeg",
-        type: "executives"
-    },
-    {
-        name: "Diya Mirani",
-        position: "Treasurer",
-        imgsrc: "https://i.imgur.com/LYXsFsQ.jpeg",
-        type: "executives"
-    },
-    {
-        name: "Dhyan Shah",
-        position: "Technical Head",
-        imgsrc: "https://i.imgur.com/PTQeHnF.png",
-        type: "executives"
-    },
-    {
-        name: "Vraj Patel",
-        position: "AI/ML Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Dev Mehta",
-        position: "Cloud & DevOps Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Aryan Randeriya",
-        position: "Web Development Head",
-        imgsrc: "https://github.com/aryanranderiya.png",
-        type: "Technical Heads"
-    },
-    {
-        name: "Meet Dholakia",
-        position: "Web Development Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Devarsh Mehta",
-        position: "App Development Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Mann Patel",
-        position: "App Development Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Vishal Lokwani",
-        position: "Competitive Programming Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Aadish Sheth",
-        position: "Competitive Programming Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Ananta Nandpara",
-        position: "Cyber Security Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Dharmi Patel",
-        position: "Cyber Security Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Meet Janiyani",
-        position: "Game Development Head",
-        type: "Technical Heads"
-    },
-    {
-        name: "Anuj Sharma",
-        position: "Content & Documentation Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Avani Gupta",
-        position: "Creative Marketing Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Mokshal Shah",
-        position: "Event Management & Logistics Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Axat Vaghela",
-        position: "Event Management & Logistics Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Aayush Khandelwal",
-        position: "Graphic Design Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Tanish Jha",
-        position: "Publicity Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Yashmi Panchal",
-        position: "Publicity Head",
-        type: "non-Technical Heads"
-    },
-    {
-        name: "Vansh Jain",
-        position: "Sponsorship Head",
-        type: "non-Technical Heads"
-    }
-];
+import { teamMembers } from "../../pages/Team"
 
 export default function Team() {
 
     return (
         <section className="min-h-screen py-[3em] justify-center h-fit w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl">The Team</span>
+                <span className="font-semibold text-5xl">The Executives</span>
                 <span className="font-normal text-md text-foreground-500">Meet the faces behind the club!</span>
             </div>
 

@@ -11,6 +11,7 @@ import linkedin from "../images/linkedin.webp"
 import instagram from "../images/instagram.webp"
 import twitter from "../images/twitter.webp"
 import Map from "../components/Home/Map"
+import Encode from "../components/Home/Encode"
 
 export default function Home({ preloaderEnded }) {
     const navigate = useNavigate();
@@ -93,11 +94,11 @@ export default function Home({ preloaderEnded }) {
                         <span className="font-bold">home</span> - Go to the Home page (You are already at home page) <br />
                         <span className="font-bold">about</span> - Go to the About page <br />
                         <span className="font-bold">team</span> - Go to the Team page <br />
-                        <span className="font-bold">gallery</span> - Go to the Gallery page <br />
-                        <span className="font-bold">contact</span> - Go to the Contact page <br />
+                        {/* <span className="font-bold">gallery</span> - Go to the Gallery page <br /> */}
+                        {/* <span className="font-bold">contact</span> - Go to the Contact page <br /> */}
 
-                        <br /><span className="font-bold">------- Other -------</span><br />
-                        coming soon <br />
+                        {/* <br /><span className="font-bold">------- Other -------</span><br /> */}
+                        {/* coming soon <br /> */}
                         <br />
 
                         <br /> <br />
@@ -147,6 +148,9 @@ export default function Home({ preloaderEnded }) {
             case "contact":
                 navigate("/contact");
                 output = "Redirecting to the Contact page...";
+                break;
+            case "encode":
+                output = <Encode scrollContainerRef={convoHistoryRef} />;
                 break;
             case "":
             case "^c":
