@@ -59,7 +59,7 @@ export const teamMembers = [
     {
         name: "Mann Patel",
         position: "App Development Head",
-        imgsrc: "https://i.imgur.com/ERcQSfM.jpeg",
+        imgsrc: "https://i.imgur.com/e0LbDyr.png",
         type: "Technical Heads"
     },
     {
