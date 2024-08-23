@@ -94,6 +94,18 @@ export default function Home({ preloaderEnded }) {
                         <span className="font-bold">home</span> - Go to the Home page (You are already at home page) <br />
                         <span className="font-bold">about</span> - Go to the About page <br />
                         <span className="font-bold">team</span> - Go to the Team page <br />
+
+                        <br /><span className="font-bold">------- Presentations -------</span><br />
+                        <span className="font-bold">welcome1</span> - View Room 007 PPT <br />
+                        <span className="font-bold">welcome2</span> - View Room 008 PPT <br />
+
+                        <br /><span className="font-bold">------- Projects -------</span><br />
+                        <span className="font-bold">ai/ml</span> - View AI/ML Team's Projects <br />
+                        <span className="font-bold">app</span> - View App Dev Team's Projects <br />
+                        <span className="font-bold">web</span> - View Web Dev Team's Projects <br />
+                        <span className="font-bold">game</span> - View Game Dev Team's Projects <br />
+                        <span className="font-bold">cloud</span> - View Cloud and Devops Team's Projects <br />
+
                         {/* <span className="font-bold">gallery</span> - Go to the Gallery page <br /> */}
                         {/* <span className="font-bold">contact</span> - Go to the Contact page <br /> */}
 
@@ -128,6 +140,34 @@ export default function Home({ preloaderEnded }) {
                         </a>
                     </div>
                 );
+                break;
+            case "welcome1":
+                window.open("https://www.canva.com/design/DAGOmla9Xlc/IgdX_mCaruQhxiZofktxGg/edit?utm_content=DAGOmla9Xlc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "welcome2":
+                window.open("https://www.canva.com/design/DAGOfe1J5M0/nEnUgLCU4nFIWbguP3vRAA/edit?utm_content=DAGOfe1J5M0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "ai/ml":
+                window.open("https://drive.google.com/drive/folders/1yDYtO62pFz0mjq3lGj2jv7c2PRslYWBz", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "app":
+                window.open("https://drive.google.com/drive/folders/14OTBlJgOcHY0rjYjtlIjzjBYQJynOXaK", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "cloud":
+                window.open("https://drive.google.com/drive/folders/1VIEm8LzFoCXJdX347NeZVtTrSd_MKw24", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "game":
+                window.open("https://drive.google.com/drive/folders/13_N-bAfOIA7eEpVlDTV-eakH7CFZ9Kqp", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
+                break;
+            case "web":
+                window.open("https://drive.google.com/drive/folders/1--DpsXy7ipfSX_XmAQbY5l4Q01bKZMj9", "_blank");
+                output = "Redirecting to the Welcome Presentation...";
                 break;
             case "home":
                 navigate("/");
