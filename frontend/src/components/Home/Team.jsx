@@ -1,5 +1,4 @@
-import { Button } from "@nextui-org/button";
-import { TeamCard } from "../../pages/Team";
+// import { TeamCard } from "../../pages/Team";
 import { Link } from "react-router-dom";
 import { teamMembers } from "../../pages/Team"
 import { Button } from "@nextui-org/button"
