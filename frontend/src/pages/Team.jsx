@@ -17,7 +17,7 @@ export const teamMembers = [
     {
         name: "Diya Mirani",
         position: "Treasurer",
-        imgsrc: "https://cdn.discordapp.com/attachments/1274834605651791885/1276261290473554043/image.png?ex=66c8e273&is=66c790f3&hm=4b25cf80a81cb051ab7405a00d6013ce027ac97a7d6336b485cecbb4d1a210bd&",
+        imgsrc: "https://i.imgur.com/LYXsFsQ.jpeg",
         type: "executives"
     },
     {
