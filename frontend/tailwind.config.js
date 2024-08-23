@@ -16,7 +16,16 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        '-25': '-25deg',
+        '25': '25deg',
+        '-30': '-30deg',
+        '30': '30deg',
+        '-15': '-15deg',
+        '15': '15deg'
+      },
+    },
   },
   darkMode: "class",
   plugins: [

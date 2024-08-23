@@ -1,3 +1,7 @@
+import { Button } from "@nextui-org/button";
+import { TeamCard } from "../../pages/Team";
+import { Link } from "react-router-dom";
+import { teamMembers } from "../../pages/Team"
 import { Button } from "@nextui-org/button"
 // import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useRef } from "react";
@@ -114,7 +118,7 @@ export default function Team() {
     return (
         <section className="min-h-screen justify-center h-fit w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl">The Team</span>
+                <span className="font-semibold text-5xl">The Executives</span>
                 <span className="font-normal text-md text-foreground-500">Meet the faces behind the club!</span>
             </div>
 

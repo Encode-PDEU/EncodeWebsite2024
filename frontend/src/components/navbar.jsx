@@ -5,14 +5,43 @@ import { Cancel01Icon, Menu01Icon } from "../components/icons";
 import logo from "../encode_logo.png";
 
 const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, ref) => {
+
+    const navigate = useNavigate();
+    // setToggleMenuOpen((prev) => !prev)
+
     return (
         <>
             <div className="flex fixed top-0 left-0 w-full flex-col p-[1em] items-center justify-around gap-3 bg-black h-[40vh] py-[50px] transition-all z-[1] border-b-1 border-[#00ff7b] duration-500" ref={ref} props={props}>
-                <span className="text-2xl">Home</span>
-                <span className="text-2xl">Team</span>
-                <span className="text-2xl">About</span>
-                <span className="text-2xl">Contact</span>
-                <span className="text-2xl">Gallery</span>
+
+                <span className="text-2xl" onClick={() => {
+                    setToggleMenuOpen((prev) => !prev)
+                    navigate("/")
+                }}>
+                    Home
+                </span>
+
+                <span className="text-2xl" onClick={() => {
+                    setToggleMenuOpen((prev) => !prev)
+                    navigate("team")
+                }}>
+                    Team
+                </span>
+
+                <span className="text-2xl" onClick={() => {
+                    setToggleMenuOpen((prev) => !prev)
+                    navigate("about")
+                }}>
+                    About
+                </span>
+
+
+                <span className="text-2xl" onClick={() => {
+                    setToggleMenuOpen((prev) => !prev)
+                    navigate("gallery")
+                }}>
+                    Gallery
+                </span>
+
             </div>
 
             <div
@@ -25,6 +54,7 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
 
 export default function Navbar() {
     const menuRef = useRef(null);
+
     const [toggleMenuOpen, setToggleMenuOpen] = useState(true)
 
     useEffect(() => {

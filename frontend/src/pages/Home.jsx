@@ -6,11 +6,12 @@ import Gallery from "../components/Home/Gallery";
 import Quote from "../components/Home/Quote";
 import Team from "../components/Home/Team";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
-import { SentIcon, TerminalIcon } from "../components/icons";
+import { SentIcon, TerminalIcon, QuoteDownIcon, Album01Icon, GlobeIcon, UserGroupIcon, Calendar01Icon } from "../components/icons";
 import linkedin from "../images/linkedin.webp"
 import instagram from "../images/instagram.webp"
 import twitter from "../images/twitter.webp"
 import Map from "../components/Home/Map"
+import Encode from "../components/Home/Encode"
 
 export default function Home({ preloaderEnded }) {
     const navigate = useNavigate();
@@ -93,11 +94,11 @@ export default function Home({ preloaderEnded }) {
                         <span className="font-bold">home</span> - Go to the Home page (You are already at home page) <br />
                         <span className="font-bold">about</span> - Go to the About page <br />
                         <span className="font-bold">team</span> - Go to the Team page <br />
-                        <span className="font-bold">gallery</span> - Go to the Gallery page <br />
-                        <span className="font-bold">contact</span> - Go to the Contact page <br />
+                        {/* <span className="font-bold">gallery</span> - Go to the Gallery page <br /> */}
+                        {/* <span className="font-bold">contact</span> - Go to the Contact page <br /> */}
 
-                        <br /><span className="font-bold">------- Other -------</span><br />
-                        coming soon <br />
+                        {/* <br /><span className="font-bold">------- Other -------</span><br /> */}
+                        {/* coming soon <br /> */}
                         <br />
 
                         <br /> <br />
@@ -147,6 +148,9 @@ export default function Home({ preloaderEnded }) {
             case "contact":
                 navigate("/contact");
                 output = "Redirecting to the Contact page...";
+                break;
+            case "encode":
+                output = <Encode scrollContainerRef={convoHistoryRef} />;
                 break;
             case "":
             case "^c":
@@ -224,7 +228,7 @@ export default function Home({ preloaderEnded }) {
 
             <div className="min-h-[100vh] transition-height flex items-center justify-center p-[1em] w-screen mt-[-30px]">
                 <div className="flex h-[80dvh] w-full transition-height flex-col items-center justify-center sm:w-[90%] bg-gray-900 bg-opacity-5 backdrop-blur-[6px] outline outline-1 outline-gray-600 sm:rounded-none rounded-none relative green_shadow z-[1]">
-                    <div className="absolute top-0 w-full h-[35px] bg-gray-500 bg-opacity-20 rounded-t-none p-2  text-white text-opacity-40 justify-between flex">
+                    <div className="absolute top-0 w-full h-[30px] bg-gray-500 bg-opacity-20 rounded-t-none p-2  text-white text-opacity-40 justify-between flex">
 
                         <div className="flex gap-2">
                             <TerminalIcon color="#00ff7b90" />
@@ -302,6 +306,38 @@ export default function Home({ preloaderEnded }) {
             <Map />
             <Gallery />
             <Quote />
+
+            {/* <div className="fixed left-0 top-0 h-screen flex p-[2em] items-center">
+
+                <div className="bg-[rgba(0,255,123,0.3)] w-[4px] h-[60%] rounded-full flex flex-col justify-around items-center relative overflow-visible">
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b] backdrop-blur-sm">
+                        <TerminalIcon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b]  backdrop-blur-sm">
+                        <Calendar01Icon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b]  backdrop-blur-sm">
+                        <UserGroupIcon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b]  backdrop-blur-sm">
+                        <GlobeIcon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b]  backdrop-blur-sm">
+                        <Album01Icon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                    <div className="rounded-full w-[30px] h-[30px] bg-[#055c2f91] flex items-center justify-center outline outline-1 outline-[#00ff7b]  backdrop-blur-sm">
+                        <QuoteDownIcon color="#00ff7b" width="20px" height="20px" />
+                    </div>
+
+                </div>
+
+            </div> */}
         </div>
     );
 }
