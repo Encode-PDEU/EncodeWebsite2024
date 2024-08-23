@@ -89,7 +89,7 @@ export const teamMembers = [
     {
         name: "Meet Janiyani",
         position: "Game Development Head",
-        imgsrc: "https://i.imgur.com/ePhBFfL.jpeg",
+        imgsrc: "https://i.imgur.com/6FEDZcz.png",
         type: "Technical Heads"
     },
     {

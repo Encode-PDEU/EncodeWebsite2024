@@ -106,10 +106,9 @@ export default function Preloader({ setPreloaderEnded }) {
                 >
                     <span className="uppercase self-center sm:text-[2rem] leading-none sm:mb-[-4rem]">loading{loadingDots}</span>
                     <span className="sm:text-[7rem] text-[3rem] leading-none font-bold">
-                        {timerCount % 3 === 0 && timerCount !== 100 ?
+                         {timerCount % 3 === 0 && timerCount !== 100 ?
                             getRandomCharacter() + getRandomCharacter() + getRandomCharacter()
                             : timerCount}%
-
                     </span>
                 </div>
             </div>
