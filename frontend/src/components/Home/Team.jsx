@@ -138,7 +138,9 @@ export default function Team() {
 
 
             </div>
+            <Link to={"team"}>
             <Button color="success" radius="none" size="lg" className="font-semibold text-lg">View All Members</Button>
+            </Link>
         </section >
     )
 }
