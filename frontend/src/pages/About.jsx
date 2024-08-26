@@ -27,12 +27,12 @@ const About = ({ preloaderEnded }) => {
         duration: 1,
         delay: 1,
         stagger: 0.1,
-        color: "#17C964"
+        color: "#00ff7b"
       });
 
       ScrollTrigger.matchMedia({
         // Desktop
-        "(min-width: 768px)": function() {
+        "(min-width: 768px)": function () {
           gsap.to(".journey h1", {
             transform: "translateX(-250%)",
             scrollTrigger: {
@@ -46,14 +46,14 @@ const About = ({ preloaderEnded }) => {
           });
         },
         // Mobile
-        "(max-width: 767px)": function() {
+        "(max-width: 767px)": function () {
           gsap.to(".journey h1", {
             transform: "translateX(-250%)",
             scrollTrigger: {
               trigger: ".journey",
               scroller: "body",
-              start: "top 20%",  
-              end: "top -80%",   
+              start: "top 20%",
+              end: "top -80%",
               scrub: 3,
               pin: true
             }
@@ -62,7 +62,7 @@ const About = ({ preloaderEnded }) => {
       });
 
       gsap.to(".first-sticker", {
-        xPercent: -250, // Move sticker along the x-axis
+        xPercent: -250,
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -73,7 +73,7 @@ const About = ({ preloaderEnded }) => {
       });
 
       gsap.to(".second-sticker", {
-        xPercent: -30, // Move sticker along the x-axis
+        xPercent: -30,
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -107,14 +107,14 @@ const About = ({ preloaderEnded }) => {
 
         
       });
-      
+
     }
   }, [preloaderEnded]);
 
   const handleMouseEnter = (e) => {
     gsap.to(e.target, {
       y: -30,
-      color: "#17C964",
+      color: "#00ff7b",
       ease: "elastic.out(1.4,0.3)"
     });
   };
@@ -130,7 +130,7 @@ const About = ({ preloaderEnded }) => {
   const handleMarqueeHover = (e) => {
     gsap.to(e.target, {
       scale: 1.1,
-      color: "#17C964",
+      color: "#00ff7b",
       duration: 0.1
     });
   };
@@ -138,19 +138,19 @@ const About = ({ preloaderEnded }) => {
   const handleMarqueeLeave = (e) => {
     gsap.to(e.target, {
       scale: 1,
-      color: "#fff", 
+      color: "#fff",
       duration: 0.1
     });
   };
 
   return (
     <>
-      <div className="about flex flex-col justify-center pt-[6.5em] pb-[1em] px-[2em]">
+      <div className="about flex sm:flex-col flex-col-reverse justify-center sm:pt-[7em] pt-[5em] sm:pb-[3em] pb-[2em] px-[2em]">
         <div className="para overflow-hidden lg:pl-[50%] sm:pl-[30%]">
-          <p className='lg:text-[1.7vw] sm:text-[1.9vw]'>Encode is an inclusive technical community that goes beyond conventional tech promotion, 
-              embracing individuals eager to explore the realms of computer science and emerging technologies. 
-              It&apos;s a supportive space where curiosity, knowledge sharing, and innovation are celebrated, 
-              fostering the growth of both technology and its passionate enthusiasts.</p>
+          <p className='lg:text-[1.7vw] sm:text-[1.9vw]'>Encode is an inclusive technical community that goes beyond conventional tech promotion,
+            embracing individuals eager to explore the realms of computer science and emerging technologies.
+            It&apos;s a supportive space where curiosity, knowledge sharing, and innovation are celebrated,
+            fostering the growth of both technology and its passionate enthusiasts.</p>
         </div>
         <div className="title">
           <h1 className='font-semibold overflow-hidden text-[15vw] font-menseal whitespace-nowrap'>
@@ -166,8 +166,8 @@ const About = ({ preloaderEnded }) => {
         </div>
       </div>
       <div className="marquee-container">
-        <p className='text-center font-menseal mb-[10px]'>At Encode, We explore</p>
-        <Marquee className='marquee mb-10 border-t-[#17C964] border-t-4 border-b-[#17C964] border-b-4' speed={150}>
+        {/* <p className='text-center font-menseal mb-[10px]'>At Encode, We explore</p> */}
+        <Marquee className='marquee mb-10 border-t-[#00ff7b] border-t-4 border-b-[#00ff7b] border-b-4' speed={200} pauseOnHover>
           <h1 className='text-[5vw]'>
             <span onMouseEnter={handleMarqueeHover} onMouseLeave={handleMarqueeLeave}>&nbsp;Web Development </span>
             <span>✦ </span>
@@ -189,7 +189,7 @@ const About = ({ preloaderEnded }) => {
       <div className="journey relative w-[100vw] absolute">
         <h1 className='journey-text text-[40vw] text-nowrap z-[1]' style={{fontWeight: 700}}>
           OUR JOURNEY!
-          <div className='first-sticker bg-[#39DD20] absolute top-[30%] left-[20%] px-[4vw] py-[1vw] text-[2vw] transform -rotate-25 rounded-2xl border-white lg:border-4 border-2' style={{boxShadow: "2px 3px 5px black"}}>
+          <div className='first-sticker bg-[#39DD20] absolute top-[30%] left-[20%] px-[4vw] py-[1vw] text-[2vw] transform -rotate-25 rounded-2xl border-white lg:border-4 border-2' style={{ boxShadow: "2px 3px 5px black" }}>
             <p className='text-[white] minecraft'>Started in 2013!</p>
           </div>
           <div className='second-sticker bg-[green] absolute top-[35%] right-[-245%] p-[2vw] text-[2vw] transform rotate-25 rounded border-white border-4'>
@@ -221,7 +221,7 @@ const About = ({ preloaderEnded }) => {
             <p className='info text-[white] minecraft'>2022 & 2023</p>
           </div>
           <div className='third-sticker absolute top-[10%] left-[80%] text-[2vw] transform rotate-15'>
-            <img src="https://i.ibb.co/KNhB2Dz/img1.jpg" alt="" style={{width: '20vw', objectFit: 'cover', borderRadius: "10%"}}/>
+            <img src="https://i.ibb.co/KNhB2Dz/img1.jpg" alt="" style={{ width: '20vw', objectFit: 'cover', borderRadius: "10%" }} />
           </div>
           <img src="https://i.ibb.co/PD1fNPT/img12.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "9%"}} className='image-sticker absolute left-[130%] top-[60%] transform -rotate-25'/>
           <img src="https://i.ibb.co/0CWMjxP/img22.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "7%"}} className='image-sticker absolute left-[150%] top-[15%] transform'/>
