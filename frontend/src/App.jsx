@@ -7,7 +7,6 @@ import Footer from "./components/footer";
 import TeamPage from "./pages/Team";
 import About from "./pages/About";
 import { ReactLenis } from 'lenis/react'
-import ScrollToTop from "./components/ScrollToTop";
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
