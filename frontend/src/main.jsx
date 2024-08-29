@@ -5,7 +5,6 @@ import App from "./App.jsx";
 import { Provider } from "./provider.tsx";
 import "@/styles/globals.css";
 import { ReactLenis } from 'lenis/react'
-import ScrollToTop from "./components/ScrollToTop.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
