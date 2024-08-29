@@ -74,6 +74,7 @@ export default function Home({ preloaderEnded }) {
         if (container) container.scrollTop = container.scrollHeight;
     };
 
+
     const handleCommand = (cmd) => {
         let output;
         let isValidCmd = true;

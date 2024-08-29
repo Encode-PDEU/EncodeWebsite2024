@@ -30,6 +30,8 @@ const About = ({ preloaderEnded }) => {
         color: "#00ff7b"
       });
 
+      
+
       ScrollTrigger.matchMedia({
         // Desktop
         "(min-width: 768px)": function () {
@@ -58,11 +60,43 @@ const About = ({ preloaderEnded }) => {
               pin: true
             }
           });
-        }
+        },
       });
+      // const mediaQuery = window.matchMedia("(max-width: 767px)");
+      // const applyAnimations = (e) => {
+      //   if (e.matches) {
+      //     // Mobile animations
+      //     gsap.to(".journey h1", {
+      //       transform: "translateX(-250%)",
+      //       scrollTrigger: {
+      //         trigger: ".journey",
+      //         scroller: "body",
+      //         start: "top 20%",
+      //         end: "top -80%",
+      //         scrub: 3,
+      //         pin: true
+      //       }
+      //     });
+      //   } else {
+      //     // Desktop animations
+      //     gsap.to(".journey h1", {
+      //       transform: "translateX(-250%)",
+      //       scrollTrigger: {
+      //         trigger: ".journey",
+      //         scroller: "body",
+      //         start: "top 0%",
+      //         end: "top -100%",
+      //         scrub: 3,
+      //         pin: true
+      //       }
+      //     });
+      //   }
+      // };
+      // applyAnimations(mediaQuery);
+      // mediaQuery.addEventListener('change', applyAnimations);
 
       gsap.to(".first-sticker", {
-        xPercent: -250,
+        xPercent: -150,
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -84,7 +118,7 @@ const About = ({ preloaderEnded }) => {
       });
 
       gsap.to(".third-sticker", {
-        xPercent: 100, // Move sticker along the x-axis
+        xPercent: 50, // Move sticker along the x-axis
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -96,13 +130,14 @@ const About = ({ preloaderEnded }) => {
         
       });
       gsap.to(".image-sticker", {
-        xPercent: 50, // Move sticker along the x-axis
+        xPercent: 150, // Move sticker along the x-axis
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
           start: "top 0%",
           end: "top -100%",
-          scrub: 3
+          scrub: 3,
+          stagger: 0.1
         }
 
         
@@ -224,10 +259,10 @@ const About = ({ preloaderEnded }) => {
             <img src="https://i.ibb.co/KNhB2Dz/img1.jpg" alt="" style={{ width: '20vw', objectFit: 'cover', borderRadius: "10%" }} />
           </div>
           <img src="https://i.ibb.co/PD1fNPT/img12.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "9%"}} className='image-sticker absolute left-[130%] top-[60%] transform -rotate-25'/>
-          <img src="https://i.ibb.co/0CWMjxP/img22.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "7%"}} className='image-sticker absolute left-[150%] top-[15%] transform'/>
-          <img src="https://i.ibb.co/X4xzJfz/img3.jpg" alt="" style={{width: '20vw', objectFit: 'cover', borderRadius: "8%"}} className='image-sticker absolute left-[220%] top-[15%] transform'/>
-          <img src="https://i.ibb.co/JtbNDgb/img2.jpg" alt="" style={{width: '10vw', objectFit: 'cover', borderRadius: "5%"}} className='image-sticker absolute left-[195%] top-[55%] transform'/>
-          <img src="https://i.imgur.com/fwCwlHR.jpeg" alt="" style={{width: '18vw', objectFit: 'cover', borderRadius: "2%"}} className='image-sticker absolute left-[255%] top-[50%] transform border-3 border-black '/>
+          <img src="https://i.ibb.co/0CWMjxP/img22.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "7%"}} className='image-sticker absolute left-[160%] top-[15%] transform'/>
+          <img src="https://i.ibb.co/X4xzJfz/img3.jpg" alt="" style={{width: '20vw', objectFit: 'cover', borderRadius: "8%"}} className='image-sticker absolute left-[240%] top-[15%] transform'/>
+          <img src="https://i.ibb.co/JtbNDgb/img2.jpg" alt="" style={{width: '10vw', objectFit: 'cover', borderRadius: "5%"}} className='image-sticker absolute left-[205%] top-[55%] transform'/>
+          <img src="https://i.imgur.com/fwCwlHR.jpeg" alt="" style={{width: '18vw', objectFit: 'cover', borderRadius: "2%"}} className='image-sticker absolute left-[275%] top-[50%] transform border-3 border-black '/>
           
           
           
