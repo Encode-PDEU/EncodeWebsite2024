@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
@@ -7,6 +7,10 @@ import Marquee from "react-fast-marquee";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = ({ preloaderEnded }) => {
+  const [year, setYear] = useState("");
+  useEffect(()=> {
+    setYear( (new Date().getFullYear()) - 2013 );
+  })
 
   useGSAP(() => {
     if (preloaderEnded) {
@@ -25,6 +29,8 @@ const About = ({ preloaderEnded }) => {
         stagger: 0.1,
         color: "#00ff7b"
       });
+
+      
 
       ScrollTrigger.matchMedia({
         // Desktop
@@ -54,11 +60,43 @@ const About = ({ preloaderEnded }) => {
               pin: true
             }
           });
-        }
+        },
       });
+      // const mediaQuery = window.matchMedia("(max-width: 767px)");
+      // const applyAnimations = (e) => {
+      //   if (e.matches) {
+      //     // Mobile animations
+      //     gsap.to(".journey h1", {
+      //       transform: "translateX(-250%)",
+      //       scrollTrigger: {
+      //         trigger: ".journey",
+      //         scroller: "body",
+      //         start: "top 20%",
+      //         end: "top -80%",
+      //         scrub: 3,
+      //         pin: true
+      //       }
+      //     });
+      //   } else {
+      //     // Desktop animations
+      //     gsap.to(".journey h1", {
+      //       transform: "translateX(-250%)",
+      //       scrollTrigger: {
+      //         trigger: ".journey",
+      //         scroller: "body",
+      //         start: "top 0%",
+      //         end: "top -100%",
+      //         scrub: 3,
+      //         pin: true
+      //       }
+      //     });
+      //   }
+      // };
+      // applyAnimations(mediaQuery);
+      // mediaQuery.addEventListener('change', applyAnimations);
 
       gsap.to(".first-sticker", {
-        xPercent: -250,
+        xPercent: -150,
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -80,7 +118,7 @@ const About = ({ preloaderEnded }) => {
       });
 
       gsap.to(".third-sticker", {
-        xPercent: 100,
+        xPercent: 50, // Move sticker along the x-axis
         scrollTrigger: {
           trigger: ".journey",
           scroller: "body",
@@ -88,6 +126,21 @@ const About = ({ preloaderEnded }) => {
           end: "top -100%",
           scrub: 3
         }
+
+        
+      });
+      gsap.to(".image-sticker", {
+        xPercent: 150, // Move sticker along the x-axis
+        scrollTrigger: {
+          trigger: ".journey",
+          scroller: "body",
+          start: "top 0%",
+          end: "top -100%",
+          scrub: 3,
+          stagger: 0.1
+        }
+
+        
       });
 
     }
@@ -168,14 +221,14 @@ const About = ({ preloaderEnded }) => {
           </h1>
         </Marquee>
       </div>
-      <div className="journey relative">
-        <h1 className='journey-text text-[40vw] text-nowrap' style={{ fontWeight: 700 }}>
+      <div className="journey relative w-[100vw] absolute">
+        <h1 className='journey-text text-[40vw] text-nowrap z-[1]' style={{fontWeight: 700}}>
           OUR JOURNEY!
           <div className='first-sticker bg-[#39DD20] absolute top-[30%] left-[20%] px-[4vw] py-[1vw] text-[2vw] transform -rotate-25 rounded-2xl border-white lg:border-4 border-2' style={{ boxShadow: "2px 3px 5px black" }}>
             <p className='text-[white] minecraft'>Started in 2013!</p>
           </div>
-          <div className='second-sticker bg-[green] absolute top-[35%] right-[-245%] p-[2vw] text-[2vw] transform rotate-25 rounded'>
-            <p className='text-[white] minecraft'>This is our 11th Year!</p>
+          <div className='second-sticker bg-[green] absolute top-[35%] right-[-245%] p-[2vw] text-[2vw] transform rotate-25 rounded border-white border-4'>
+            <p className='text-[white] minecraft'>This is our {year}th Year!</p>
           </div>
           <div className='first-sticker bg-[crimson] absolute top-[55%] left-[55%] p-[2vw] text-[1vw] transform rotate-25 rounded border-white lg:border-4 border-2'>
             <p className='date text-[white] minecraft'>Nov 2014</p>
@@ -194,7 +247,7 @@ const About = ({ preloaderEnded }) => {
             <p className='date text-[white] minecraft'>Sept 2016</p>
             <p className='info text-[white] minecraft'>First SQL Workshop</p>
           </div>
-          <div className='first-sticker bg-[lightseagreen] absolute top-[30%] left-[225%] p-[2vw] text-[1vw] transform -rotate-30 rounded border-black lg:border-4 border-2'>
+          <div className='first-sticker bg-[lightseagreen] absolute top-[20%] left-[215%] p-[2vw] text-[1vw] transform -rotate-30 rounded border-black lg:border-4 border-2'>
             <p className='date text-[black] minecraft'>Mar 2017</p>
             <p className='info text-[black] minecraft'>First MATLAB Workshop</p>
           </div>
@@ -205,11 +258,18 @@ const About = ({ preloaderEnded }) => {
           <div className='third-sticker absolute top-[10%] left-[80%] text-[2vw] transform rotate-15'>
             <img src="https://i.ibb.co/KNhB2Dz/img1.jpg" alt="" style={{ width: '20vw', objectFit: 'cover', borderRadius: "10%" }} />
           </div>
-          {/* <div className='fourth-sticker absolute top-[20%] left-[180%] transform rotate-15 z-[10]'>
-            <img src="https://i.ibb.co/KNhB2Dz/img1.jpg" alt="" style={{width: '20vw', objectFit: 'cover', borderRadius: "10%"}}/>
-          </div> */}
+          <img src="https://i.ibb.co/PD1fNPT/img12.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "9%"}} className='image-sticker absolute left-[130%] top-[60%] transform -rotate-25'/>
+          <img src="https://i.ibb.co/0CWMjxP/img22.jpg" alt="" style={{width: '15vw', objectFit: 'cover', borderRadius: "7%"}} className='image-sticker absolute left-[160%] top-[15%] transform'/>
+          <img src="https://i.ibb.co/X4xzJfz/img3.jpg" alt="" style={{width: '20vw', objectFit: 'cover', borderRadius: "8%"}} className='image-sticker absolute left-[240%] top-[15%] transform'/>
+          <img src="https://i.ibb.co/JtbNDgb/img2.jpg" alt="" style={{width: '10vw', objectFit: 'cover', borderRadius: "5%"}} className='image-sticker absolute left-[205%] top-[55%] transform'/>
+          <img src="https://i.imgur.com/fwCwlHR.jpeg" alt="" style={{width: '18vw', objectFit: 'cover', borderRadius: "2%"}} className='image-sticker absolute left-[275%] top-[50%] transform border-3 border-black '/>
+          
+          
+          
         </h1>
+        
       </div>
+      
     </>
   );
 }
