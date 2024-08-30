@@ -100,6 +100,9 @@ export default function Home({ preloaderEnded }) {
                         <span className="font-bold">welcome1</span> - View Room 007 PPT <br />
                         <span className="font-bold">welcome2</span> - View Room 008 PPT <br />
 
+                        <br /><span className="font-bold">------- Quiz -------</span><br />
+                        <span className="font-bold">quiz</span> - Go to Quiz Page <br />
+
                         <br /><span className="font-bold">------- Projects -------</span><br />
                         <span className="font-bold">ai/ml</span> - View AI/ML Team's Projects <br />
                         <span className="font-bold">app</span> - View App Dev Team's Projects <br />
@@ -114,10 +117,13 @@ export default function Home({ preloaderEnded }) {
                         {/* coming soon <br /> */}
                         <br />
 
-                        <br /> <br />
-                    </>
+                    </> 
                 );
                 break;
+            case "quiz":
+                    window.open("https://encode-intro.vercel.app/", "_blank");
+                    output = "Redirecting to the Intro Quiz...";
+                    break;
             case "socials":
                 output = (
                     <div className="flex h-fit gap-2 flex-col">
