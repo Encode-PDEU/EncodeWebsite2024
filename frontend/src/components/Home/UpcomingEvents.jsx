@@ -1,7 +1,11 @@
+import React from "react";
 import { Button } from "@nextui-org/button";
 import { Chip } from "@nextui-org/chip";
 import { useRef, useEffect, useState } from "react";
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 import { Link } from "react-router-dom";
+import { modal } from "@nextui-org/theme";
 
 function formatDate(isoDate) {
     const date = new Date(isoDate);
@@ -9,9 +13,11 @@ function formatDate(isoDate) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
 }
-function EventCard({ title, date, type = "Workshop", description, isVisible, registrationLink }) {
+function EventCard({ title, date, details, moreInfo, registrationLink, imgUrl, type = "Workshop", description, isVisible }) {
     const cardRef = useRef(null);
     const [visible, setVisible] = useState(isVisible);
+    const [open, setOpen] = React.useState(false);
+    const myRef = React.useRef(null);
 
     const eventDate = new Date(date);
     const currentDate = new Date();
@@ -30,10 +36,39 @@ function EventCard({ title, date, type = "Workshop", description, isVisible, reg
         };
     }, []);
 
+    const closeIcon = (
+        <span class="material-symbols-outlined">
+            close
+        </span>
+      );
+
+
     return (
+        <>
+        <div ref={myRef} />
+        
+        
+        <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+            center
+            container={myRef.current}
+            closeIcon={closeIcon}
+        >
+            <div className="event-card-info">
+                <div className="event-img-container">
+                    <img src={imgUrl}></img>
+                </div>
+                <h1 className="text-3xl ">{title}</h1>
+                <p><span className="text-2xl">Event Description : </span><br /><span className="text-1xl">{moreInfo}</span></p>
+                <p><span className="text-2xl">Event Details : </span><br /><span className="text-1xl">{details[0]}<br />{details[1]}<br />{details[2]}<br /></span></p>
+            </div>
+        </Modal>
+
         <div
             ref={cardRef}
             className={`flex flex-col bg-[#00ff7b] bg-opacity-10 p-5 gap-2 hover:translate-y-[-10px] transition-all outline-1 hover:outline outline-[#00ff7b] sm:max-w-[20vw] sm:min-w-[20vw] max-w-[90vw] min-w-[90vw] overflow-hidden ${visible ? 'opacity-100' : 'opacity-0'}`}
+            onClick={() => setOpen(true)}
         >
             <div className="flex flex-col pb-2 gap-2">
                 <div className="flex justify-between pb-2 gap-2 flex-wrap">
@@ -48,17 +83,21 @@ function EventCard({ title, date, type = "Workshop", description, isVisible, reg
                 <Button color="danger" variant="flat" radius="none" className="mt-auto" disabled>Event has ended</Button>
             ) : (
                 !!registrationLink &&
-                <a href={registrationLink}>
+                <a href={registrationLink} className="mt-auto">
                     <Button color="success" variant="flat" radius="none" className="mt-auto">Register</Button>
                 </a>
             )}
         </div>
+        </>
     );
 }
 
 
 export default function UpcomingEvents() {
     const events = [
+        
+
+
         {
             title: "Web Security Basics",
             date: "2025-01-24T00:00:00Z",
@@ -90,24 +129,6 @@ export default function UpcomingEvents() {
             type: "Workshop"
         },
         {
-            title: "Pre-Tesseract Pixel Art Workshop",
-            date: "Soon",
-            description: "A creative art workshop before Tesseract events.",
-            type: "Workshop"
-        },
-        {
-            title: "Tesseract: CodeWars",
-            date: "Soon",
-            description: "A competitive coding challenge for all levels, where participants can showcase their skills and win exciting prizes.",
-            type: "Competition"
-        },
-        {
-            title: "Tesseract: CTF & Treasure Hunt",
-            date: "Soon",
-            description: "Capture The Flag and Treasure Hunt events, testing your problem-solving skills and knowledge.",
-            type: "Competition"
-        },
-        {
             title: "General AI Workshop",
             date: "2025-01-25T00:00:00Z",
             description: "A workshop exploring the fundamentals of AI, Machine Learning, and MLOps.",
@@ -137,32 +158,70 @@ export default function UpcomingEvents() {
             description: "Join us for a deep dive into AWS services, focusing on cloud computing essentials.",
             type: "Workshop"
         },
+
+
+        {
+            title: "Guardians of the Elements",
+            date: "19th Oct",
+            status: "current",
+            description: "Navigate through real-world locations, solve unique elemental challenges, and unlock hidden clues. This interactive adventure blends technology and nature, as you journey to prove your worth as true Guardians of the Elements!",
+            moreInfo: "Embark on Guardians of the Elements, a thrilling geolocation-based treasure hunt where you and your team will explore the power of Earth, Fire, Water, Air, and Ether through a custom-built app. Navigate through real-world locations, solve unique elemental challenges, and unlock hidden clues. This interactive adventure blends technology and nature, testing your endurance, intellect, and adaptability as you journey to prove your worth as true Guardians of the Elements!",
+            details: ["1. Event Timings:  19th October 2024, Saturday 10:00 AM to 12:00 PM", "2. Event Venue: To be conducted throughout the whole campus with various locations for clues", "3. Event Price: Rs. 120 per team"],
+            imgUrl: "https://i.imgur.com/IX9LTKS.png",
+            registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSdN3cQDTvbAwTtJ8OUNFUA9N_ARb64YdIkzW1I-cQy-B0bKgA/viewform",
+            type: "Treasure hunt"
+        },
+        {
+            title: "Capture The Flag",
+            date: "19th Oct",
+            status: "current",
+            description: "Whether you're cracking cryptography, mastering reverse engineering, or outsmarting digital defenses, this competition has it all.",
+            moreInfo: "Capture The Flag (CTF), the ultimate thrill ride in cybersecurity, brought to you by our coding club! Ready to put your hacker hat on and dive into a world of puzzles, codes, and challenges? Whether you’re cracking cryptography, mastering reverse engineering, or outsmarting digital defenses, this competition has it all. Our custom-built CTF platform is your playground, where you’ll face off against the best, push your skills to the limit, and compete for the glory of being crowned the top cyber sleuth. Let the games begin!",
+            details: ["1. Event Timings:  19th October 2024, Saturday 02:00 PM to 05:00 PM", "2. Event Venue:  BLT/ Computer Lab", "3. Event Price: Rs. 50 per team"],
+            imgUrl: "https://i.imgur.com/Dpj6yRA.png",
+            registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLScSS2SHdhDXWUw2TscHjEwNF8gPJqwRnMP3fC5bArodtTTvnQ/viewform",
+            type: "Competition"
+        },
+        {
+            title: "Code Tatva",
+            date: "20th Oct",
+            status: "current",
+            description: "Feel the adrenaline of solving challenges? Join Encode's Code Tatva to compete in challenges that tests your foundational coding skills and reasoning.",
+            moreInfo : "Code Tatva is a Competitive Programming challenge where participants in a team take part to solve CP questions in a contest. where the five elements—Earth, Fire, Water, Air, and Ether—guide your coding journey. Compete in challenges that test your foundational skills with Earth-based problems, speed and efficiency with Fire-themed tasks, adaptability with Water puzzles, logical flow with Air challenges, and creative thinking with Ether problems. Showcase your coding prowess and unlock the secrets of each element as you strive to become the ultimate coding Guardian!",
+            details: ["1. Event Timings:  20th October 2024, Sunday 09:00 AM to 01:00 PM", "2. Event Venue:  C007/C008/Computer Lab", "3. Event Price: Rs. 70 per team"],
+            imgUrl: "https://i.imgur.com/DuTMdrW.png",
+            registrationLink: "https://forms.gle/oFm41wRoAam1iRgv6",
+            type: "Competition"
+        }
     ];
 
 
     return (
+        
         <section className="min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl text-center">Upcoming Events</span>
-                <span className="font-normal text-md text-foreground-500">This year's events of Encode!</span>
+                <span className="font-semibold text-5xl text-center">TesseractX</span>
+                <span className="font-normal text-md text-foreground-500">TesseractX events of Encode!</span>
             </div>
 
             <div className="flex flex-wrap gap-5 justify-center w-[100vw]">
                 {events
-                    .filter(event => event.date !== "Soon").sort((a, b) => new Date(a.date) - new Date(b.date))
-                    .concat(events.filter(event => event.date === "Soon")).map((event, index) => (
+                    .filter(event => event.status == "current").map((event, index) => (
                         <EventCard
                             key={index}
                             title={event.title}
                             date={event.date}
                             description={event.description}
                             type={event.type}
+                            moreInfo={event.moreInfo}
+                            details={event.details}
                             isVisible={false}
+                            imgUrl={event.imgUrl}
+                            registrationLink={event.registrationLink}
                         />
                     ))}
             </div>
-
-            <Button color="success" radius="none" size="lg" className="mt-2 font-semibold text-lg">View All Events</Button>
         </section>
+        
     );
 }
