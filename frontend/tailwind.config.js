@@ -1,15 +1,10 @@
 import { nextui } from "@nextui-org/theme";
+import svgToDataUri from "mini-svg-data-uri";
+import colors from "tailwindcss/colors";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 /** @type {import('tailwindcss').Config} */
-
-const svgToDataUri = require("mini-svg-data-uri");
-
-const colors = require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-
-module.exports = {
+export default {
   content: [
     "./index.html",
     "./src/**/**/*.{js,ts,jsx,tsx,mdx}",

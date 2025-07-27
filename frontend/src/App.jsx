@@ -6,6 +6,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import TeamPage from "./pages/Team";
 import About from "./pages/About";
+import GalleryPage from "./pages/Gallery";
 import { ReactLenis } from 'lenis/react'
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
@@ -114,6 +115,7 @@ export default function App() {
             <About preloaderEnded={preloaderEnded} />
           </ReactLenis>
         } path="about" ></Route>
+        <Route path="/gallery" element={<GalleryPage />} />
       </Routes>
       <Footer />
     </main>

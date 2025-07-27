@@ -88,9 +88,11 @@ export default function Navbar() {
                         team
                     </Button>
                 </Link>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    gallery
-                </Button>
+                <Link to="gallery">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        gallery
+                    </Button>
+                </Link>
                 <Button className="quote-button" radius="none" variant="light" color="success">
                     contact
                 </Button>
