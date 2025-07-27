@@ -1,7 +1,7 @@
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps"
 import geoUrl from "../Map/main.json"
 import { Tooltip } from "@nextui-org/tooltip";
-import "../../../node_modules/flag-icons/css/flag-icons.min.css";
+import "flag-icons/css/flag-icons.min.css"; // Updated import
 import { markers } from "../Map/markers"
 
 export default function Map() {
