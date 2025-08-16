@@ -226,3 +226,13 @@ body {
   'GRAD' 0,
   'opsz' 24
 }
+
+/* Blinking cursor effect for the heading */
+.blinking-cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: oklch(72.3% .219 149.579); }
+}
