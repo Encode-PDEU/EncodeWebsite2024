@@ -8,6 +8,7 @@ import TeamPage from "./pages/Team";
 import About from "./pages/About";
 import GalleryPage from "./pages/Gallery";
 import { ReactLenis } from 'lenis/react'
+import Contact from "./pages/Contact";
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
@@ -116,6 +117,7 @@ export default function App() {
           </ReactLenis>
         } path="about" ></Route>
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/contact-us" element={<Contact />} />
       </Routes>
       <Footer />
     </main>
