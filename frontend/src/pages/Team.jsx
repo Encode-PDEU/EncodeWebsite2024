@@ -11,7 +11,7 @@ const teamMembers = [
   {
     name: "Nemil Shah",
     position: "Vice President",
-    imgsrc: "/CommiteePhotos/Execs/A",
+    imgsrc: "/CommittePhotos/Execs/Nemil_Shah.jpeg",
     type: "executives"
   },
   {
@@ -117,6 +117,12 @@ const teamMembers = [
     type: "non-Technical Heads"
   },
   {
+    name: "Dhwani Bhut",
+    position: "Social Media Head",
+    imgsrc: "/CommittePhotos/SM/Dhwani_Bhut.jpeg",
+    type: "non-Technical Heads"
+  },
+  {
     name: "Aarav Patel",
     position: "Publicity Head",
     imgsrc: "/CommittePhotos/PR/Aarav_Patel.jpeg",
@@ -129,8 +135,6 @@ const teamMembers = [
     type: "non-Technical Heads"
   }
 ];
-
-// ✅ Export separately (so it can still be imported elsewhere if needed)
 export { teamMembers };
 
 export function TeamCard({ imgsrc = "https://links.aryanranderiya.com/l/default_user", name, position }) {
@@ -161,7 +165,7 @@ export function TeamCard({ imgsrc = "https://links.aryanranderiya.com/l/default_
     >
       <img
         src={imgsrc}
-        className="w-[170px] h-[170px] min-w-[170px] min-h-[170px] max-h-[170px] rounded-full object-cover"
+        className="w-[170px] h-[170px] min-w-[170px] min-h-[170px] max-h-[170px] rounded-full object-cover scale-90"
       />
       <div className="flex flex-col items-center">
         <span className="text-2xl helvetica text-center ">{name}</span>
