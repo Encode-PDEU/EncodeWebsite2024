@@ -17,7 +17,7 @@ const executives = [
   {
     name: "Nemil Shah",
     position: "Vice President",
-    imgsrc: "/CommiteePhotos/Execs/A",
+    imgsrc: "/CommittePhotos/Execs/Nemil_Shah.jpeg",
     type: "executives",
     links: ["", "", ""],
   },
