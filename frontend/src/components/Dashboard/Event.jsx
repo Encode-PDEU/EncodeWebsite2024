@@ -61,21 +61,50 @@ export default function Event() {
   }
 
   const handleUpdateEvent = async () => {
-    if (!editingEvent) return
-
+    if (!editingEvent) return;
+  
     try {
-      // TODO: Replace with actual API call
-      console.log("Updating event in database:", editingEvent)
-
-      // Update local state
-      setEvents(events.map((event) => (event.$id === editingEvent.$id ? editingEvent : event)))
-
-      setIsEditDialogOpen(false)
-      setEditingEvent(null)
+      const { $createdAt, $id, $permissions, $updatedAt, ...restObject } = editingEvent;
+  
+      let fileUrl = restObject.imgUrl;
+  
+      if (selectedFile) {
+        // Extract old file ID
+        if (restObject.imgUrl) {
+          const extractedID = restObject.imgUrl.split("/files/")[1].split("/")[0];
+          if (extractedID) {
+            await DBService.deleteFile(extractedID);
+          }
+        }
+  
+        // Upload new file
+        const uploadedFile = await DBService.uploadFile(selectedFile);
+  
+        // Build new URL
+        fileUrl = `${import.meta.env.VITE_APPWRITE_ENDPOINT}/storage/buckets/${import.meta.env.VITE_APPWRITE_BUCKETID}/files/${uploadedFile.$id}/view?project=${import.meta.env.VITE_APPWRITE_PROJECTID}`;
+      }
+  
+      // ✅ Make sure imgUrl is passed explicitly
+      const updated = await DBService.updateEvent(editingEvent.$id, {
+        ...restObject,
+        imgUrl: fileUrl,
+      });
+      
+      // Merge UI state
+      const mergedEvent = { ...editingEvent, ...updated };
+  
+      setEvents(events.map((event) =>
+        event.$id === editingEvent.$id ? mergedEvent : event
+      ));
+  
+      setIsEditDialogOpen(false);
+      setEditingEvent(null);
+      setSelectedFile(null);
     } catch (error) {
-      console.error("Failed to update event:", error)
+      console.error("Failed to update event:", error);
     }
-  }
+  };
+  
 
   const handleCreateEvent = async () => {
     try {
@@ -106,16 +135,19 @@ export default function Event() {
   };
 
   const handleDeleteEvent = async (eventId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this event?");
+    if (!confirmDelete) return;
+  
     try {
-      // TODO: Replace with actual API call
-      console.log("Deleting event from database:", eventId)
-
-      // Update local state
-      setEvents(events.filter((event) => event.$id !== eventId))
+      await DBService.deleteEvent(eventId);
+  
+      setEvents(events.filter((event) => event.$id !== eventId));
     } catch (error) {
-      console.error("Failed to delete event:", error)
+      console.error("Failed to delete event:", error);
+      alert("Failed to delete event. Please try again.");
     }
-  }
+  };
+  
 
   const handleInputChange = (field, value) => {
     if (!editingEvent) return
@@ -147,7 +179,7 @@ export default function Event() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-0 place-items-center gap-y-14 py-10">
-        {events.map((event) => (
+        {events?.map((event) => (
           <Card key={event?.$id} className="shadow-md rounded-xl w-[320px] min-h-[530px] border-1 border-white/20">
             <CardContent className="p-0 flex flex-col">
               {/* Image */}
@@ -161,7 +193,7 @@ export default function Event() {
 
               {/* Content */}
               <div className="p-4 flex flex-col justify-between flex-1">
-                <div className="space-y-2">
+                <div className="space-y-2 h-[147px]">
                   <h3 className="text-lg font-bold text-foreground">{event?.title}</h3>
 
                   <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -323,6 +355,15 @@ export default function Event() {
                     id="registrationLink"
                     value={editingEvent.registrationLink}
                     onChange={(e) => handleInputChange("registrationLink", e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="new-imgFile">Upload Image</Label>
+                  <Input
+                    id="new-imgFile"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setSelectedFile(e.target.files[0])}
                   />
                 </div>
               </div>

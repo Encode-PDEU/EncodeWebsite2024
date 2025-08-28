@@ -46,7 +46,7 @@ class Database {
             )
             return res
         }catch(error){
-            console.log("Error occured while updating event : ", e);
+            console.log("Error occured while updating event : ", error);
         }
     }
 
@@ -71,6 +71,18 @@ class Database {
                 file
             )
             return uploadedFile;
+        }catch(e){
+            console.log("Error occured while uploading file : ", e);
+        }
+    }
+
+    async deleteFile(id){
+        try{
+            const res = await this.storage.deleteFile(
+                import.meta.env.VITE_APPWRITE_BUCKETID,
+                id
+            )
+            return red;
         }catch(e){
             console.log("Error occured while uploading file : ", e);
         }

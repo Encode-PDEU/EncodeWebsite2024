@@ -1,19 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Dock, DockIcon } from "../components/magicui/dock";
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { DBService } from "../services/appwrite.config.js"
 import Event from '../components/Dashboard/Event.jsx';
 import Team from '../components/Dashboard/Team.jsx';
-import { scale } from 'motion/react';
+import {isAuthenticated} from '../lib/auth.js'
 
 const Dashboard = () => {
 
-  const params = useParams()
-  const navigate = useNavigate()
-  let activeSection = params.id
-  if(!activeSection || (activeSection != 'team' && activeSection != 'event')){
-    navigate('/')
-  }
+  const params = useParams();
+  const navigate = useNavigate();
+  const activeSection = params.id;
+
+  useEffect(() => {
+    console.log(isAuthenticated())
+    if (isAuthenticated() == false) {
+      navigate("/login", { replace: true });
+      return;
+    }
+
+    if (!activeSection || (activeSection !== "team" && activeSection !== "event")) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate, params.id]);
 
   return (
     <div className='relative sm:min-h-[70vh] min-h-screen w-full pt-[72px] flex'>
