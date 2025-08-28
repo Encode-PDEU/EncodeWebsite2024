@@ -12,7 +12,7 @@ const executives = [
     position: "President",
     imgsrc: "/CommittePhotos/Execs/Axat_Vaghela.jpeg",
     type: "executives",
-    links: ["", "", ""], // ✅ added default
+    links: ["", "", ""], 
   },
   {
     name: "Nemil Shah",
