@@ -6,14 +6,18 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import TeamPage from "./pages/Team";
 import About from "./pages/About";
+import GalleryPage from "./pages/Gallery";
 import { ReactLenis } from 'lenis/react'
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 const MouseEffect = ({ position, delayedPosition, isMouseDown }) => {
   return (
     <>
       {/* Small cursor effect */}
       <div
-        className={`fixed rounded-full ${isMouseDown ? "cursorscale" : ""} h-[15px] w-[15px] bg-[#00ff7b] duration-75 transition-transform z-20 pointer-events-none`}
+        className={`fixed rounded-full ${isMouseDown ? "cursorscale" : ""} h-[15px] w-[15px] bg-[#00ff7b] duration-75 transition-transform z-[51] pointer-events-none`}
         style={{
           left: position.x,
           top: position.y,
@@ -114,6 +118,10 @@ export default function App() {
             <About preloaderEnded={preloaderEnded} />
           </ReactLenis>
         } path="about" ></Route>
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard/:id" element={<Dashboard />} />
       </Routes>
       <Footer />
     </main>

@@ -42,6 +42,13 @@ const NavbarMenu = forwardRef(({ toggleMenuOpen, setToggleMenuOpen, ...props }, 
                     Gallery
                 </span>
 
+                <span className="text-2xl" onClick={() => {
+                    setToggleMenuOpen((prev) => !prev)
+                    navigate("contact-us")
+                }}>
+                    Contact
+                </span>
+
             </div>
 
             <div
@@ -88,12 +95,16 @@ export default function Navbar() {
                         team
                     </Button>
                 </Link>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    gallery
-                </Button>
-                <Button className="quote-button" radius="none" variant="light" color="success">
-                    contact
-                </Button>
+                <Link to="gallery">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        gallery
+                    </Button>
+                </Link>
+                <Link to="contact-us">
+                    <Button className="quote-button" radius="none" variant="light" color="success">
+                        contact
+                    </Button>
+                </Link>
 
                 <span className="text-4xl text-foreground-300">]</span>
             </div>

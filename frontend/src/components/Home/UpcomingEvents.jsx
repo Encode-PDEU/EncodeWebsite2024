@@ -6,6 +6,7 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { Link } from "react-router-dom";
 import { modal } from "@nextui-org/theme";
+import { DBService } from "../../services/appwrite.config.js"
 
 function formatDate(isoDate) {
     const date = new Date(isoDate);
@@ -13,15 +14,34 @@ function formatDate(isoDate) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
 }
+
+function formatDateCustom(input) {
+    const date = new Date(Number(input));
+  
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "short" });
+  
+    function addDaySuffix(d) {
+      if (d > 3 && d < 21) return d + "th";
+      switch (d % 10) {
+        case 1: return d + "st";
+        case 2: return d + "nd";
+        case 3: return d + "rd";
+        default: return d + "th";
+      }
+    }
+  
+    return `${addDaySuffix(day)}, ${month}`;
+}
 function EventCard({ title, date, details, moreInfo, registrationLink, imgUrl, type = "Workshop", description, isVisible }) {
     const cardRef = useRef(null);
     const [visible, setVisible] = useState(isVisible);
     const [open, setOpen] = React.useState(false);
     const myRef = React.useRef(null);
 
-    const eventDate = new Date(date);
     const currentDate = new Date();
-    const isEventFinished = eventDate < currentDate;
+    const isEventFinished = (date+86400000) < currentDate;
+    details = JSON.parse(details)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -72,7 +92,7 @@ function EventCard({ title, date, details, moreInfo, registrationLink, imgUrl, t
         >
             <div className="flex flex-col pb-2 gap-2">
                 <div className="flex justify-between pb-2 gap-2 flex-wrap">
-                    <Chip color={isEventFinished ? "danger" : "success"} variant="dot">{formatDate(date)}</Chip>
+                    <Chip color={isEventFinished ? "danger" : "success"} variant="dot">{formatDateCustom(date)}</Chip>
                     <Chip color="success" variant="flat">{type}</Chip>
                 </div>
                 <span className="text-2xl sm:max-w-[18vw] sm:min-w-[18vw]">{title}</span>
@@ -94,10 +114,10 @@ function EventCard({ title, date, details, moreInfo, registrationLink, imgUrl, t
 
 
 export default function UpcomingEvents() {
+
+    const[eventData, setEventData] = useState([])
+
     const events = [
-        
-
-
         {
             title: "Web Security Basics",
             date: "2025-01-24T00:00:00Z",
@@ -195,22 +215,28 @@ export default function UpcomingEvents() {
         }
     ];
 
+    useEffect(() =>{
+        const res = DBService.getAllEvents().then((obj) => setEventData(obj))
+    }, [])
 
     return (
         
         <section className="min-h-screen h-fit justify-center w-full flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-5xl text-center">TesseractX</span>
-                <span className="font-normal text-md text-foreground-500">TesseractX events of Encode!</span>
+                <span className="font-semibold text-5xl text-center">Upcoming Events</span>
+                <span className="font-normal text-md text-foreground-500">Upcoming events of Encode!</span>
             </div>
 
             <div className="flex flex-wrap gap-5 justify-center w-[100vw]">
-                {events
-                    .filter(event => event.status == "current").map((event, index) => (
+                {eventData
+                    .filter((e) => e.status == "upcoming" || e.status == "ongoing")
+                    .sort((a, b) => Number(a.date) - Number(b.date))
+                    .slice(0,3) 
+                    .map((event, index) => (
                         <EventCard
                             key={index}
                             title={event.title}
-                            date={event.date}
+                            date={(event.date)}
                             description={event.description}
                             type={event.type}
                             moreInfo={event.moreInfo}
@@ -219,7 +245,7 @@ export default function UpcomingEvents() {
                             imgUrl={event.imgUrl}
                             registrationLink={event.registrationLink}
                         />
-                    ))}
+                ))}
             </div>
         </section>
         
