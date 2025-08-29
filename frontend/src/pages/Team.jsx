@@ -110,6 +110,12 @@ const teamMembers = [
     imgsrc: "/CommittePhotos/EM/Laksh_Parekh.jpg",
     type: "non-Technical Heads"
   },
+    {
+    name: "Bhavya Jain",
+    position: "Event Management & Logistics Head",
+    imgsrc: "/CommittePhotos/EM/bhavya.jpeg",
+    type: "non-Technical Heads"
+  },
   {
     name: "Kunjan Panchal",
     position: "Graphic Design Head",
@@ -117,9 +123,21 @@ const teamMembers = [
     type: "non-Technical Heads"
   },
   {
+    name: "Yug Brahmbhatt",
+    position: "Graphic Design Head",
+    imgsrc: "/CommittePhotos/GD/Yug_Brahmbhatt.jpeg",
+    type: "non-Technical Heads"
+  },
+  {
     name: "Dhwani Bhut",
     position: "Social Media Head",
     imgsrc: "/CommittePhotos/SM/Dhwani_Bhut.jpeg",
+    type: "non-Technical Heads"
+  },
+  {
+    name: "Worship Sharma",
+    position: "Social Media Head",
+    imgsrc: "/CommittePhotos/SM/worship.jpg",
     type: "non-Technical Heads"
   },
   {
